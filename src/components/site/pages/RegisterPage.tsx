@@ -50,15 +50,18 @@ const LOCATIONS = [
 ];
 
 const ROLE_CATEGORIES = [
-  "SOC Analyst",
-  "Penetration Tester",
-  "GRC Specialist",
-  "Cloud Security Engineer",
-  "Threat Intelligence Analyst",
-  "Application Security Engineer",
-  "IAM Specialist",
-  "Detection & Response Engineer",
-  "Security Architect",
+  "Software Engineering",
+  "Cybersecurity",
+  "Cloud / DevOps",
+  "AI / Machine Learning",
+  "Data Engineering",
+  "Data Analytics",
+  "Product Design (UX/UI)",
+  "Mobile Engineering",
+  "QA / Test Engineering",
+  "Site Reliability Engineering",
+  "Product Management",
+  "Engineering Management",
   "Other / Not sure yet",
 ];
 
@@ -405,7 +408,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
     return (
       <>
         <Background variant="hero" />
-        <section className="relative pt-36 pb-32 min-h-[80vh] flex items-center">
+        <section className="relative pt-28 pb-24 min-h-[80vh] flex items-center">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 w-full">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -421,7 +424,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-gold/10 border border-gold/40"
+                className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gold/10 border border-gold/40"
               >
                 <CheckCircle2 className="h-10 w-10 text-gold" />
               </motion.div>
@@ -430,10 +433,11 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                 Registration complete.
               </h1>
               <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                Welcome to GuardianX Academy. Your profile is now active in our
+                Welcome to GuardianX. Your profile is now active in our
                 consultancy network. Our team will review your details and
                 reach out within five business days to discuss matching
-                opportunities.
+                opportunities and walk you through the post-placement
+                consultancy fee structure.
               </p>
 
               <div className="mt-8 p-4 rounded-lg border border-border bg-background/50 inline-block">
@@ -450,7 +454,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                 )}
               </div>
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
                 <CTAButton onClick={() => onNavigate("placements")}>
                   Explore Placement Categories
                 </CTAButton>
@@ -470,7 +474,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
       <Background variant="hero" />
 
       {/* Hero */}
-      <section className="relative pt-36 pb-12 sm:pt-44 sm:pb-16">
+      <section className="relative pt-28 pb-8 sm:pt-32 sm:pb-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -488,7 +492,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-8 font-display text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground leading-[1.05]"
+            className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.05]"
           >
             Begin your
             <br />
@@ -499,7 +503,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-8 max-w-3xl text-lg text-muted-foreground leading-relaxed"
+            className="mt-6 max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             Complete the four-step registration form, accept the terms, and pay
             the ₹2,000 registration fee securely via Razorpay. Your profile
@@ -509,7 +513,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
       </section>
 
       {/* Form card */}
-      <section className="relative pb-24">
+      <section className="relative pb-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-2xl border border-border bg-card/30 backdrop-blur-sm overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
@@ -914,9 +918,10 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                       </div>
                       <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
                         Secured via Razorpay. Post-placement consultancy fee
-                        (equivalent to two months&apos; salary, in two
-                        installments) only applies after you receive and accept
-                        an offer.
+                        applies upon successful placement — full terms
+                        (structure, payment timelines, refund conditions,
+                        service terms) will be discussed with you after
+                        registration, before any employer engagement.
                       </p>
                     </div>
 
@@ -936,12 +941,13 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                       <span className="text-sm text-muted-foreground leading-relaxed">
                         I confirm that the information provided is accurate to
                         the best of my knowledge. I understand the registration
-                        fee of ₹2,000 is non-refundable, the post-placement
-                        consultancy fee applies only upon offer acceptance, and
+                        fee of ₹2,000 is non-refundable, that a post-placement
+                        consultancy fee applies upon successful placement
+                        (full terms to be discussed after registration), and
                         that final selection is subject to the employer&apos;s
-                        hiring process. All applicable fees, payment timelines,
-                        refund conditions, and service terms have been
-                        explained before registration.
+                        hiring process. All applicable fees, payment
+                        timelines, refund conditions, and service terms will
+                        be explained before any employer engagement.
                       </span>
                     </label>
 

@@ -77,8 +77,8 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
     <>
       <Background variant="hero" />
 
-      {/* Hero */}
-      <section className="relative pt-36 pb-16 sm:pt-44 sm:pb-20">
+      {/* Hero — tighter */}
+      <section className="relative pt-28 pb-10 sm:pt-32 sm:pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -96,7 +96,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-8 font-display text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground leading-[1.05]"
+            className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.05]"
           >
             Let&apos;s talk
             <br />
@@ -107,7 +107,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-8 max-w-3xl text-lg sm:text-xl text-muted-foreground leading-relaxed"
+            className="mt-6 max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             Have questions about the registration process, fee structure, or
             placement timeline? We encourage candidates to clarify any
@@ -118,7 +118,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
       </section>
 
       {/* Contact form + sidebar */}
-      <section className="relative pb-24">
+      <section className="relative pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form */}
@@ -328,7 +328,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
                     </div>
                     <div>
                       <h3 className="font-display text-base font-semibold text-foreground mb-1">
-                        GuardianX Academy
+                        GuardianX Recruitment
                       </h3>
                       <p className="font-mono text-xs text-muted-foreground group-hover:text-gold transition-colors">
                         academy.guardianx.cloud
@@ -392,28 +392,28 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
       </section>
 
       {/* Office / presence */}
-      <section className="relative py-16 border-t border-border bg-card/20">
+      <section className="relative py-12 border-t border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Our Presence"
-            title="GuardianX Academy"
-            description="GuardianX Academy is the cybersecurity recruitment and career assistance arm of the GuardianX family, alongside GuardianX Security."
+            title="GuardianX Recruitment"
+            description="GuardianX Recruitment & Career Assistance Consultancy is the technology recruitment arm of the GuardianX family, alongside GuardianX Security."
           />
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-8 rounded-lg border border-border bg-card/30">
-              <div className="flex items-center gap-3 mb-4">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-6 rounded-lg border border-border bg-card/30">
+              <div className="flex items-center gap-3 mb-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
                   <Building2 className="h-4 w-4" />
                 </div>
                 <h3 className="font-display text-lg font-semibold text-foreground">
-                  GuardianX Academy
+                  GuardianX Recruitment
                 </h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Cybersecurity Recruitment &amp; Career Assistance. We assist
-                candidates in exploring cybersecurity job opportunities through
-                our consultancy network.
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                Technology Recruitment &amp; Career Assistance Consultancy.
+                We assist candidates in exploring technology job opportunities
+                across every domain through our consultancy network.
               </p>
               <a
                 href="https://www.academy.guardianx.cloud"
@@ -426,8 +426,8 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
               </a>
             </div>
 
-            <div className="p-8 rounded-lg border border-border bg-card/30">
-              <div className="flex items-center gap-3 mb-4">
+            <div className="p-6 rounded-lg border border-border bg-card/30">
+              <div className="flex items-center gap-3 mb-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
                   <ShieldCheck className="h-4 w-4" />
                 </div>
@@ -435,7 +435,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
                   GuardianX Security
                 </h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                 Our sibling property — GuardianX Security — focuses on
                 cybersecurity services and solutions for enterprises.
               </p>

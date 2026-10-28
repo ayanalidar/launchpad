@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { PAGES, type PageId } from "./use-router";
+import { BrandLogo } from "./ui/BrandLogo";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
@@ -16,7 +17,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -45,27 +46,15 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
         )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
+          {/* Tighter header height: h-16 instead of h-20 */}
+          <div className="flex h-16 sm:h-20 items-center justify-between">
             {/* Logo */}
             <button
               onClick={() => handleNav("home")}
-              className="group flex items-center gap-3 transition-opacity hover:opacity-90"
-              aria-label="GuardianX Academy — Home"
+              className="group"
+              aria-label="GuardianX Recruitment — Home"
             >
-              <div className="relative">
-                <div className="absolute inset-0 rounded-md bg-gold/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-md border border-gold/40 bg-gradient-to-br from-gold/20 to-transparent">
-                  <ShieldCheck className="h-5 w-5 text-gold" strokeWidth={1.75} />
-                </div>
-              </div>
-              <div className="flex flex-col items-start leading-none">
-                <span className="font-display text-lg font-semibold tracking-tight text-foreground">
-                  Guardian<span className="text-gold">X</span>
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground mt-1">
-                  Academy
-                </span>
-              </div>
+              <BrandLogo />
             </button>
 
             {/* Desktop nav */}
@@ -118,83 +107,69 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
       {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl md:hidden"
-            >
-              <div className="flex h-20 items-center justify-between px-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-md border border-gold/40 bg-gradient-to-br from-gold/20 to-transparent">
-                    <ShieldCheck className="h-5 w-5 text-gold" strokeWidth={1.75} />
-                  </div>
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="font-display text-lg font-semibold text-foreground">
-                      Guardian<span className="text-gold">X</span>
-                    </span>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground mt-1">
-                      Academy
-                    </span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setMobileOpen(false)}
-                  className="inline-flex items-center justify-center h-10 w-10 rounded-md border border-border text-foreground"
-                  aria-label="Close menu"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </div>
-
-              <motion.nav
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  visible: { transition: { staggerChildren: 0.06 } },
-                }}
-                className="flex flex-col px-6 py-8 gap-2"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl md:hidden"
+          >
+            <div className="flex h-16 sm:h-20 items-center justify-between px-4">
+              <BrandLogo />
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex items-center justify-center h-10 w-10 rounded-md border border-border text-foreground"
+                aria-label="Close menu"
               >
-                {PAGES.map((p) => (
-                  <motion.button
-                    key={p.id}
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                    onClick={() => handleNav(p.id)}
-                    className={cn(
-                      "flex items-center justify-between py-4 border-b border-border text-left",
-                      currentPage === p.id
-                        ? "text-gold"
-                        : "text-foreground"
-                    )}
-                  >
-                    <span className="font-display text-2xl font-medium">
-                      {p.label}
-                    </span>
-                    <span className="font-mono text-xs text-muted-foreground">
-                      0{PAGES.indexOf(p) + 1}
-                    </span>
-                  </motion.button>
-                ))}
+                <X className="h-5 w-5" />
+              </button>
+            </div>
 
+            <motion.nav
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: { transition: { staggerChildren: 0.06 } },
+              }}
+              className="flex flex-col px-6 py-6 gap-1"
+            >
+              {PAGES.map((p) => (
                 <motion.button
+                  key={p.id}
                   variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0 },
                   }}
-                  onClick={() => handleNav("register")}
-                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-gold px-6 py-4 text-sm font-semibold text-gold-foreground hover:shadow-[0_0_30px_-5px] hover:shadow-gold/40 transition-all"
+                  onClick={() => handleNav(p.id)}
+                  className={cn(
+                    "flex items-center justify-between py-4 border-b border-border text-left",
+                    currentPage === p.id
+                      ? "text-gold"
+                      : "text-foreground"
+                  )}
                 >
-                  Register Now — ₹2,000
-                  <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
+                  <span className="font-display text-2xl font-medium">
+                    {p.label}
+                  </span>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    0{PAGES.indexOf(p) + 1}
+                  </span>
                 </motion.button>
-              </motion.nav>
-            </motion.div>
-          </>
+              ))}
+
+              <motion.button
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                onClick={() => handleNav("register")}
+                className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-gold px-6 py-4 text-sm font-semibold text-gold-foreground hover:shadow-[0_0_30px_-5px] hover:shadow-gold/40 transition-all"
+              >
+                Register Now — ₹2,000
+                <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
+              </motion.button>
+            </motion.nav>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

@@ -3,19 +3,22 @@
 import { motion } from "framer-motion";
 import {
   ShieldCheck,
-  Users,
-  Briefcase,
+  Search,
   MapPin,
+  Handshake,
   Lock,
-  Award,
+  CheckCircle2,
   ArrowUpRight,
   Linkedin,
   Globe,
-  CheckCircle2,
-  FileCheck,
-  Search,
-  Handshake,
   Sparkles,
+  Briefcase,
+  Layers,
+  Users,
+  Cpu,
+  Zap,
+  TrendingUp,
+  Award,
 } from "lucide-react";
 import { type PageId } from "../use-router";
 import { Background, Noise } from "../ui/Background";
@@ -24,6 +27,10 @@ import { StatCard } from "../ui/StatCard";
 import { ProcessFlow } from "../ui/ProcessFlow";
 import { RoleCard } from "../ui/RoleCard";
 import { CTAButton } from "../ui/CTAButton";
+import { HeroIllustration } from "../ui/HeroIllustration";
+import { DomainMarquee } from "../ui/DomainMarquee";
+import { SectionDivider } from "../ui/SectionDivider";
+import { BentoCard } from "../ui/BentoCard";
 
 interface HomePageProps {
   onNavigate: (p: PageId) => void;
@@ -32,15 +39,15 @@ interface HomePageProps {
 const valueProps = [
   {
     icon: Search,
-    title: "Curated Cybersecurity Roles",
+    title: "Curated Tech Roles",
     description:
-      "We work exclusively with cybersecurity positions — SOC analysts, penetration testers, GRC specialists, cloud security engineers, and threat intelligence roles across India. Your profile is matched against live requirements in our consultancy network, not generic job listings.",
+      "We work across every domain of technology — from cybersecurity and software engineering to cloud, AI/ML, data, design, and platform roles. Your profile is matched against live requirements in our consultancy network, not generic job listings.",
   },
   {
     icon: MapPin,
     title: "Location-Aware Matching",
     description:
-      "Share your preferred location — Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai, or remote — and we prioritize opportunities that fit your geography. Relocation-friendly employers and remote-first security teams are part of the network.",
+      "Share your preferred location — Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai, or remote — and we prioritise opportunities that fit your geography. Relocation-friendly employers and remote-first teams are part of the network.",
   },
   {
     icon: Handshake,
@@ -79,52 +86,52 @@ const processSteps = [
     step: "04",
     title: "Placement",
     description:
-      "Final selection happens via the employer's process. Upon offer, the agreed consultancy fee applies in two installments.",
+      "Final selection happens via the employer's process. Post-placement consultancy fee terms apply as agreed.",
   },
 ];
 
 const roleCategories = [
   {
-    title: "SOC Analyst",
+    title: "Cybersecurity Analyst",
     level: "Entry → Senior",
     description:
-      "Monitor SIEM, triage alerts, hunt threats, and respond to incidents across cloud and on-prem environments.",
-    skills: ["SIEM", "Splunk", "QRadar", "Threat Hunting"],
+      "SOC, threat hunting, vulnerability assessment, GRC, and penetration testing roles across cloud and on-prem environments.",
+    skills: ["SIEM", "Splunk", "MITRE", "ISO 27001"],
   },
   {
-    title: "Penetration Tester",
+    title: "Software Engineer",
+    level: "Entry → Lead",
+    description:
+      "Backend, frontend, and full-stack engineering across Java, Python, Go, Node.js, and modern TypeScript stacks.",
+    skills: ["Java", "Python", "Go", "React"],
+  },
+  {
+    title: "Cloud / DevOps Engineer",
+    level: "Mid → Senior",
+    description:
+      "AWS, Azure, GCP platform engineering, infrastructure-as-code, Kubernetes operations, and CI/CD pipeline ownership.",
+    skills: ["AWS", "Kubernetes", "Terraform", "CI/CD"],
+  },
+  {
+    title: "AI / ML Engineer",
+    level: "Mid → Senior",
+    description:
+      "Model training, MLOps, LLM applications, computer vision, and NLP roles across product and research teams.",
+    skills: ["PyTorch", "LLMs", "MLOps", "Python"],
+  },
+  {
+    title: "Data Engineer",
+    level: "Mid → Senior",
+    description:
+      "Pipelines, data warehouses, lakehouse architecture, streaming platforms, and analytics engineering with dbt.",
+    skills: ["Spark", "Snowflake", "Airflow", "SQL"],
+  },
+  {
+    title: "Product Designer",
     level: "Mid → Lead",
     description:
-      "Conduct web app, network, mobile, and red team engagements. Write clear reports and remediation guidance.",
-    skills: ["Burp Suite", "Metasploit", "OWASP", "Bash"],
-  },
-  {
-    title: "GRC Specialist",
-    level: "Mid → Manager",
-    description:
-      "Lead risk assessments, ISO 27001 / SOC 2 audits, policy design, and third-party risk programs.",
-    skills: ["ISO 27001", "SOC 2", "NIST", "Risk"],
-  },
-  {
-    title: "Cloud Security Engineer",
-    level: "Mid → Senior",
-    description:
-      "Secure AWS / Azure / GCP workloads, implement CSPM, design zero-trust architectures, automate guardrails.",
-    skills: ["AWS", "Azure", "Terraform", "CSPM"],
-  },
-  {
-    title: "Threat Intelligence Analyst",
-    level: "Mid → Senior",
-    description:
-      "Track adversaries, IOCs, and TTPs. Produce actionable intel reports for SOC and detection engineering.",
-    skills: ["MITRE ATT&CK", "OSINT", "MISP", "Python"],
-  },
-  {
-    title: "Application Security Engineer",
-    level: "Mid → Senior",
-    description:
-      "Embed security in SDLC — threat modeling, SAST/DAST, secure code review, and developer enablement.",
-    skills: ["SAST", "DAST", "Threat Modeling", "DevSecOps"],
+      "UX research, interaction design, design systems, and product strategy for B2B and consumer tech products.",
+    skills: ["Figma", "Design Systems", "Research", "Prototyping"],
   },
 ];
 
@@ -133,13 +140,13 @@ const stats = [
     value: 50,
     suffix: "+",
     label: "Consultancy Partners",
-    description: "Active cybersecurity employers across India",
+    description: "Active tech employers across India",
   },
   {
-    value: 12,
+    value: 15,
     suffix: "+",
-    label: "Role Categories",
-    description: "From SOC to red team and cloud security",
+    label: "Tech Domains",
+    description: "Engineering, data, design, security & more",
   },
   {
     value: 6,
@@ -156,10 +163,10 @@ const stats = [
 ];
 
 const offerings = [
-  "Personalised recruitment assistance for cybersecurity roles",
+  "Personalised recruitment assistance across every domain of technology",
   "Direct introductions to employers in our consultancy network",
   "Confidential matching — your profile is never spammed",
-  "Transparent fee structure disclosed upfront before registration",
+  "Transparent fee structure — all terms disclosed before registration",
   "End-to-end coordination through offer and onboarding",
   "Preferred location prioritised during role matching",
 ];
@@ -170,95 +177,121 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <Background variant="hero" />
       <Noise />
 
-      {/* Hero */}
-      <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-28">
+      {/* HERO — split layout: text + illustration */}
+      <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-3 py-1.5"
-            >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold" />
-              </span>
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-gold">
-                Cybersecurity Recruitment · Now Accepting Profiles
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="mt-8 font-display text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground leading-[1.05]"
-            >
-              Your gateway to
-              <br />
-              <span className="text-gradient-gold italic">cybersecurity</span>
-              <br />
-              careers that matter.
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-8 max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed"
-            >
-              GuardianX Academy connects skilled professionals with leading
-              cybersecurity employers through our consultancy network. We
-              match you based on skills, qualifications, experience, and
-              preferred location — and stay engaged through every stage of the
-              hiring process.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-10 flex flex-wrap items-center gap-4"
-            >
-              <CTAButton onClick={() => onNavigate("register")}>
-                Begin Registration — ₹2,000
-              </CTAButton>
-              <CTAButton
-                variant="ghost"
-                onClick={() => onNavigate("placements")}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Text column */}
+            <div className="lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-3 py-1.5"
               >
-                Explore Placements
-              </CTAButton>
-            </motion.div>
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold" />
+                </span>
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-gold">
+                  Tech Recruitment · Now Accepting Profiles
+                </span>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted-foreground"
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-gold" />
-                Registration Fee ₹2,000
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-gold" />
-                Transparent Fee Terms
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-gold" />
-                Confidential Matching
-              </div>
-            </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-semibold tracking-tight text-foreground leading-[1.05]"
+              >
+                Your gateway to
+                <br />
+                <span className="text-gradient-gold italic">technology</span>
+                <br />
+                careers that matter.
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed"
+              >
+                GuardianX connects skilled professionals with leading tech
+                employers across every domain — engineering, cybersecurity,
+                cloud, AI/ML, data, design, and more. We match you based on
+                skills, qualifications, experience, and preferred location,
+                and stay engaged through every stage of the hiring process.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="mt-8 flex flex-wrap items-center gap-3"
+              >
+                <CTAButton onClick={() => onNavigate("register")}>
+                  Begin Registration — ₹2,000
+                </CTAButton>
+                <CTAButton
+                  variant="ghost"
+                  onClick={() => onNavigate("placements")}
+                >
+                  Explore Placements
+                </CTAButton>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
+              >
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-gold" />
+                  Registration Fee ₹2,000
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-gold" />
+                  Transparent Fee Terms
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-gold" />
+                  Confidential Matching
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Illustration column */}
+            <div className="lg:col-span-5">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <HeroIllustration />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stats strip */}
-      <section className="relative py-12 border-y border-border bg-card/20">
+      {/* Domain marquee */}
+      <section className="relative py-6 border-y border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="mb-4 text-center">
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+              Domains we recruit for
+            </span>
+          </div>
+          <DomainMarquee />
+        </div>
+      </section>
+
+      {/* Stats strip — tighter */}
+      <section className="relative py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((s, i) => (
               <StatCard key={s.label} {...s} delay={i * 0.08} />
             ))}
@@ -266,35 +299,28 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Value props */}
-      <section className="relative py-24 sm:py-32">
+      {/* Value props — Bento grid */}
+      <section className="relative py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Why GuardianX"
             title={
               <>
-                Built for cybersecurity careers,
+                Built for technology careers,
                 <br />
                 <span className="text-gradient-gold italic">not generic hiring.</span>
               </>
             }
-            description="We specialise exclusively in cybersecurity recruitment. That means deeper role knowledge, stronger employer relationships, and a process designed around how security teams actually hire — not how generic job boards operate."
+            description="We work across every domain of technology. That means deeper role knowledge, stronger employer relationships, and a process designed around how tech teams actually hire."
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
             {valueProps.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="group relative p-8 rounded-lg border border-border bg-card/30 backdrop-blur-sm hover:border-gold/40 transition-colors"
-              >
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gold/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" />
+              <BentoCard key={v.title} delay={i * 0.08}>
                 <div className="flex items-start gap-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
-                    <v.icon className="h-5 w-5" strokeWidth={1.75} />
+                  <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
+                    <div className="absolute inset-0 rounded-md bg-gold/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <v.icon className="relative h-5 w-5" strokeWidth={1.75} />
                   </div>
                   <div>
                     <h3 className="font-display text-xl font-semibold text-foreground mb-2">
@@ -305,14 +331,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </BentoCard>
             ))}
           </div>
         </div>
       </section>
 
+      <SectionDivider label="Process" className="my-2" />
+
       {/* Process flow */}
-      <section className="relative py-24 sm:py-32 border-y border-border bg-card/20">
+      <section className="relative py-16 sm:py-20 border-y border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             align="center"
@@ -321,11 +349,11 @@ export function HomePage({ onNavigate }: HomePageProps) {
             description="A transparent four-step process that keeps you informed at every stage. Final selection and offer letters are subject to the employer's hiring process — but we coordinate with you end-to-end."
           />
 
-          <div className="mt-20">
+          <div className="mt-16">
             <ProcessFlow steps={processSteps} />
           </div>
 
-          <div className="mt-16 flex justify-center">
+          <div className="mt-12 flex justify-center">
             <CTAButton onClick={() => onNavigate("admissions")}>
               See Full Admissions Process
             </CTAButton>
@@ -334,27 +362,27 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Role categories */}
-      <section className="relative py-24 sm:py-32">
+      <section className="relative py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Role Categories"
             title={
               <>
-                Cybersecurity roles we actively
+                Tech roles we actively
                 <br />
                 <span className="text-gradient-gold italic">recruit for.</span>
               </>
             }
-            description="Our consultancy network spans employers hiring across the full cybersecurity spectrum — from entry-level SOC analysts to senior red team leads and cloud security architects. Below is a representative sample of role categories we work with."
+            description="Our consultancy network spans employers hiring across the full technology spectrum — from entry-level engineers to senior architects and design leads. Below is a representative sample of role categories we work with."
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {roleCategories.map((r, i) => (
               <RoleCard key={r.title} {...r} index={i} />
             ))}
           </div>
 
-          <div className="mt-12 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <CTAButton variant="ghost" onClick={() => onNavigate("placements")}>
               View All Placement Categories
             </CTAButton>
@@ -362,23 +390,157 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* What's included */}
-      <section className="relative py-24 sm:py-32 border-y border-border bg-card/20">
+      {/* Premium bento grid — feature showcase */}
+      <section className="relative py-16 sm:py-20 border-y border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <SectionHeading
+            eyebrow="The GuardianX Edge"
+            title={
+              <>
+                Premium recruitment,
+                <br />
+                <span className="text-gradient-gold italic">end-to-end.</span>
+              </>
+            }
+          />
+
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[12rem]">
+            {/* Big tile */}
+            <BentoCard span="lg" glow delay={0}>
+              <div className="flex h-full flex-col justify-between">
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-md border border-gold/40 bg-gold/10 text-gold mb-4">
+                    <Sparkles className="h-5 w-5" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-tight mb-3">
+                    A recruitment partner,
+                    <br />
+                    <span className="text-gradient-gold italic">not a job board.</span>
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
+                    For ₹2,000 registration, you get a curated, consultancy-driven
+                    job search — with our team advocating for you across the tech
+                    employer network. The post-placement fee only applies once you
+                    actually receive and accept an offer.
+                  </p>
+                </div>
+                <div className="mt-6">
+                  <CTAButton onClick={() => onNavigate("register")}>
+                    Register Now — ₹2,000
+                  </CTAButton>
+                </div>
+              </div>
+            </BentoCard>
+
+            {/* Stat tiles */}
+            <BentoCard delay={0.1}>
+              <div className="flex flex-col h-full justify-between">
+                <Users className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                <div>
+                  <div className="font-display text-3xl font-semibold text-gradient-gold">
+                    50+
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    Employer partners in our network
+                  </div>
+                </div>
+              </div>
+            </BentoCard>
+
+            <BentoCard delay={0.15}>
+              <div className="flex flex-col h-full justify-between">
+                <Layers className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                <div>
+                  <div className="font-display text-3xl font-semibold text-gradient-gold">
+                    15+
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    Technology domains covered
+                  </div>
+                </div>
+              </div>
+            </BentoCard>
+
+            <BentoCard delay={0.2}>
+              <div className="flex flex-col h-full justify-between">
+                <Zap className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                <div>
+                  <div className="font-display text-3xl font-semibold text-gradient-gold">
+                    5 days
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    Avg. time to first screening call
+                  </div>
+                </div>
+              </div>
+            </BentoCard>
+
+            <BentoCard delay={0.25} span="wide">
+              <div className="flex items-center gap-5 h-full">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
+                  <Briefcase className="h-5 w-5" strokeWidth={1.75} />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-foreground mb-1">
+                    Post-Placement Fee Structure
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Pay ₹2,000 to register. The post-placement consultancy fee
+                    only applies once you receive and accept an offer — full
+                    terms are discussed with you after registration.
+                  </p>
+                </div>
+              </div>
+            </BentoCard>
+
+            <BentoCard delay={0.3}>
+              <div className="flex flex-col h-full justify-between">
+                <TrendingUp className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                <div>
+                  <div className="font-display text-base font-semibold text-foreground mb-1">
+                    Career growth focused
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Matched to roles that move your career forward
+                  </div>
+                </div>
+              </div>
+            </BentoCard>
+
+            <BentoCard delay={0.35}>
+              <div className="flex flex-col h-full justify-between">
+                <Award className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                <div>
+                  <div className="font-display text-base font-semibold text-foreground mb-1">
+                    Premium network
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Trusted employers across India
+                  </div>
+                </div>
+              </div>
+            </BentoCard>
+          </div>
+        </div>
+      </section>
+
+      {/* What's included */}
+      <section className="relative py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5">
               <SectionHeading
                 eyebrow="What You Get"
                 title={
                   <>
-                    A recruitment partner,
+                    Recruitment that
                     <br />
-                    <span className="text-gradient-gold italic">not a job board.</span>
+                    <span className="text-gradient-gold italic">advocates for you.</span>
                   </>
                 }
-                description="For ₹2,000 registration, you get a curated, consultancy-driven job search — with our team advocating for you across the cybersecurity employer network. The post-placement fee only applies once you actually receive and accept an offer."
+                description="For ₹2,000 registration, you get a curated, consultancy-driven job search — with our team advocating for you across the technology employer network."
               />
-              <div className="mt-8">
+              <div className="mt-6">
                 <CTAButton onClick={() => onNavigate("register")}>
                   Register Now — ₹2,000
                 </CTAButton>
@@ -386,7 +548,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </div>
 
             <div className="lg:col-span-7">
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {offerings.map((o, i) => (
                   <motion.li
                     key={o}
@@ -409,35 +571,33 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* LinkedIn + properties CTA */}
-      <section className="relative py-24 sm:py-32">
+      <section className="relative py-16 sm:py-20 border-t border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-2xl border border-gold/20 bg-card/40 backdrop-blur-sm p-8 sm:p-12 lg:p-16">
+          <div className="relative overflow-hidden rounded-2xl border border-gold/20 bg-card/40 backdrop-blur-sm p-8 sm:p-10 lg:p-12">
             <div className="absolute inset-0 -z-10">
               <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-gold/[0.08] blur-[120px]" />
               <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-gold/[0.05] blur-[120px]" />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 mb-6">
+                <div className="inline-flex items-center gap-2 mb-4">
                   <Sparkles className="h-4 w-4 text-gold" />
                   <span className="font-mono text-xs uppercase tracking-[0.25em] text-gold">
                     Connect With Us
                   </span>
                 </div>
-                <h2 className="font-display text-3xl sm:text-4xl font-semibold text-foreground leading-tight">
+                <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-tight">
                   Review our professional profile before you register.
                 </h2>
-                <p className="mt-6 text-base text-muted-foreground leading-relaxed">
+                <p className="mt-4 text-base text-muted-foreground leading-relaxed">
                   We encourage every candidate to review our LinkedIn presence
                   and clarify any questions about the recruitment process and
-                  payment terms before proceeding. Transparency is the
-                  foundation of this engagement.
+                  fee terms before proceeding. Transparency is the foundation
+                  of this engagement.
                 </p>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <CTAButton
-                    href="https://www.linkedin.com/company/guardianx-academy/"
-                  >
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <CTAButton href="https://www.linkedin.com/company/guardianx-academy/">
                     <Linkedin className="h-4 w-4" />
                     LinkedIn Company Page
                   </CTAButton>
@@ -450,20 +610,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 </div>
               </div>
 
-              <div className="grid gap-4">
+              <div className="grid gap-3">
                 <a
                   href="https://www.academy.guardianx.cloud"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 p-6 rounded-lg border border-border bg-background/40 hover:border-gold/40 transition-colors"
+                  className="group flex items-center justify-between gap-4 p-5 rounded-lg border border-border bg-background/40 hover:border-gold/40 transition-colors"
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
-                      <Award className="h-5 w-5" strokeWidth={1.75} />
+                      <Globe className="h-5 w-5" strokeWidth={1.75} />
                     </div>
                     <div>
                       <div className="font-display text-base font-semibold text-foreground">
-                        GuardianX Academy
+                        GuardianX Recruitment
                       </div>
                       <div className="font-mono text-xs text-muted-foreground mt-1">
                         academy.guardianx.cloud
@@ -476,7 +636,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   href="https://www.guardianx.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 p-6 rounded-lg border border-border bg-background/40 hover:border-gold/40 transition-colors"
+                  className="group flex items-center justify-between gap-4 p-5 rounded-lg border border-border bg-background/40 hover:border-gold/40 transition-colors"
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">

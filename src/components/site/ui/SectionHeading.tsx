@@ -33,7 +33,7 @@ export function SectionHeading({
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
           className={cn(
-            "flex items-center gap-3 mb-5",
+            "flex items-center gap-3 mb-4",
             align === "center" && "justify-center"
           )}
         >
@@ -60,7 +60,7 @@ export function SectionHeading({
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className={cn(
-            "mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed",
+            "mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed",
             align === "center" && "mx-auto"
           )}
         >

@@ -24,36 +24,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GuardianX Academy — Cybersecurity Recruitment & Career Assistance",
+  title: "GuardianX Recruitment & Career Assistance Consultancy",
   description:
-    "GuardianX Academy is a premier cybersecurity recruitment and career assistance consultancy. We connect skilled professionals with leading cybersecurity roles through our consultancy network.",
+    "GuardianX is a premier technology recruitment and career assistance consultancy. We connect skilled professionals with leading roles across every domain of technology — cybersecurity, engineering, cloud, AI/ML, data, design, and more — through our consultancy network.",
   keywords: [
-    "cybersecurity recruitment",
-    "GuardianX Academy",
+    "technology recruitment consultancy",
+    "GuardianX Recruitment",
+    "tech jobs India",
+    "software engineering recruitment",
     "cybersecurity jobs",
-    "SOC analyst jobs",
-    "penetration testing careers",
-    "GRC jobs",
-    "cybersecurity consultancy India",
-    "infosec careers",
+    "cloud DevOps careers",
+    "AI ML recruitment",
+    "data science jobs",
+    "career assistance consultancy",
+    "IT recruitment agency",
   ],
-  authors: [{ name: "GuardianX Academy" }],
+  authors: [{ name: "GuardianX Recruitment & Career Assistance Consultancy" }],
   icons: {
     icon: "/logo.svg",
   },
   openGraph: {
-    title: "GuardianX Academy — Cybersecurity Recruitment & Career Assistance",
+    title: "GuardianX Recruitment & Career Assistance Consultancy",
     description:
-      "Premium cybersecurity recruitment and career assistance. Connect with leading roles through our consultancy network.",
+      "Premium technology recruitment and career assistance. Connecting skilled professionals with leading roles across every domain of technology.",
     url: "https://academy.guardianx.cloud",
-    siteName: "GuardianX Academy",
+    siteName: "GuardianX Recruitment",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GuardianX Academy — Cybersecurity Recruitment",
+    title: "GuardianX Recruitment & Career Assistance Consultancy",
     description:
-      "Premium cybersecurity recruitment and career assistance consultancy.",
+      "Premium technology recruitment and career assistance consultancy.",
   },
 };
 
