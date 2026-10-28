@@ -273,7 +273,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
         toast({
           title: "Registration complete (demo mode)",
           description:
-            "Payment simulated — configure Razorpay keys in production to enable real payments.",
+            "Payment simulated, configure Razorpay keys in production to enable real payments.",
         });
       } else {
         throw new Error(data.error);
@@ -360,7 +360,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
           currency: opts.currency,
           order_id: opts.orderId,
           name: "GuardianX Academy",
-          description: "Cybersecurity Recruitment — Registration Fee",
+          description: "Cybersecurity Recruitment, Registration Fee",
           image: "/logo.svg",
           prefill: opts.prefill,
           notes: {
@@ -896,7 +896,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                         <SummaryRow label="Work Mode" value={form.workMode} />
                         <SummaryRow
                           label="Skills"
-                          value={form.keySkills || "—"}
+                          value={form.keySkills || "Not specified"}
                         />
                       </div>
                     </div>
@@ -918,7 +918,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                       </div>
                       <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
                         Secured via Razorpay. Post-placement consultancy fee
-                        applies upon successful placement — full terms
+                        applies upon successful placement, full terms
                         (structure, payment timelines, refund conditions,
                         service terms) will be discussed with you after
                         registration, before any employer engagement.
@@ -1045,7 +1045,7 @@ function SummaryRow({ label, value }: { label: string; value: string }) {
       <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
         {label}
       </span>
-      <span className="text-foreground truncate">{value || "—"}</span>
+      <span className="text-foreground truncate">{value || "Not specified"}</span>
     </div>
   );
 }

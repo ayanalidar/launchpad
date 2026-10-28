@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Real verification — HMAC SHA256 signature check
+    // Real verification, HMAC SHA256 signature check
     if (!razorpayOrderId || !razorpayPaymentId || !razorpaySignature) {
       return NextResponse.json(
         { error: "Missing payment parameters" },

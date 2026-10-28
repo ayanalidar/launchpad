@@ -2,6 +2,11 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+/**
+ * All page IDs the router knows about. `register` is intentionally
+ * omitted from PAGES so it doesn't show in the navbar; the prominent
+ * "Register Now" CTA button in the header already routes there.
+ */
 export type PageId =
   | "home"
   | "admissions"
@@ -9,11 +14,15 @@ export type PageId =
   | "register"
   | "contact";
 
+/**
+ * Pages shown in the navbar / mobile drawer.
+ * `register` is excluded because the dedicated CTA button in the
+ * header already serves that route.
+ */
 export const PAGES: { id: PageId; label: string; href: string }[] = [
   { id: "home", label: "Home", href: "#home" },
   { id: "admissions", label: "Admissions", href: "#admissions" },
   { id: "placements", label: "Placements", href: "#placements" },
-  { id: "register", label: "Register", href: "#register" },
   { id: "contact", label: "Contact", href: "#contact" },
 ];
 

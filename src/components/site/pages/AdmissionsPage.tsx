@@ -37,13 +37,13 @@ const eligibility = [
     icon: Briefcase,
     title: "Experience",
     description:
-      "We work with candidates across the experience spectrum — fresh graduates seeking entry-level roles, mid-career professionals seeking their next step, and senior practitioners targeting lead or architect positions. Your experience level helps us match you with appropriate openings.",
+      "We work with candidates across the experience spectrum, fresh graduates seeking entry-level roles, mid-career professionals seeking their next step, and senior practitioners targeting lead or architect positions. Your experience level helps us match you with appropriate openings.",
   },
   {
     icon: UserCheck,
     title: "Skills",
     description:
-      "Hands-on skills in any technology domain — software engineering, cloud, data, AI/ML, cybersecurity, design, DevOps, mobile, or platform engineering — are valued. We assess candidates based on practical capability, not just credentials. Expect a discussion of real-world scenarios during screening.",
+      "Hands-on skills in any technology domain, software engineering, cloud, data, AI/ML, cybersecurity, design, DevOps, mobile, or platform engineering, are valued. We assess candidates based on practical capability, not just credentials. Expect a discussion of real-world scenarios during screening.",
   },
   {
     icon: MapPin,
@@ -67,7 +67,7 @@ const feeSchedule = [
     amount: "Discussed after registration",
     timing: "After placement",
     description:
-      "A consultancy fee applies upon successful placement. The complete fee structure, payment timelines, refund conditions, and service terms are explained to you after registration — before you proceed with any employer engagement.",
+      "A consultancy fee applies upon successful placement. The complete fee structure, payment timelines, refund conditions, and service terms are explained to you after registration, before you proceed with any employer engagement.",
     highlight: false,
   },
 ];
@@ -78,7 +78,7 @@ const includedItems = [
   "Direct introductions to employers in our consultancy network, with relevant role and employment details shared at the appropriate stage",
   "Interview preparation and employer briefing before each engagement",
   "Coordination through offer letter, salary negotiation, and onboarding",
-  "Confidentiality of your profile — shared only with employers actively considering you",
+  "Confidentiality of your profile, shared only with employers actively considering you",
   "Full transparency on all fees and service terms, disclosed before registration",
 ];
 
@@ -86,7 +86,7 @@ const faqItems = [
   {
     question: "Is the ₹2,000 registration fee refundable?",
     answer:
-      "The ₹2,000 registration fee is non-refundable. It covers the cost of profile review, screening, and onboarding into our consultancy network. The post-placement consultancy fee only applies if you accept an offer through us — if you do not get placed, you pay nothing further.",
+      "The ₹2,000 registration fee is non-refundable. It covers the cost of profile review, screening, and onboarding into our consultancy network. The post-placement consultancy fee only applies if you accept an offer through us, if you do not get placed, you pay nothing further.",
   },
   {
     question: "What is the post-placement consultancy fee structure?",
@@ -96,7 +96,7 @@ const faqItems = [
   {
     question: "Why are client company names kept confidential initially?",
     answer:
-      "Many employers in our network require confidentiality during the initial stages of recruitment, subject to client agreements. Relevant role details, employment terms, and expectations will be shared with you at the appropriate stage — typically once you have been shortlisted and your profile is being actively considered.",
+      "Many employers in our network require confidentiality during the initial stages of recruitment, subject to client agreements. Relevant role details, employment terms, and expectations will be shared with you at the appropriate stage, typically once you have been shortlisted and your profile is being actively considered.",
   },
   {
     question: "Does registration guarantee a placement?",
@@ -116,7 +116,7 @@ const faqItems = [
   {
     question: "Do you only work with cybersecurity roles?",
     answer:
-      "No. We recruit across every domain of technology — software engineering, cloud and DevOps, AI/ML, data engineering and analytics, product design, mobile engineering, cybersecurity, platform engineering, and more. Our consultancy network spans the full technology spectrum.",
+      "No. We recruit across every domain of technology, software engineering, cloud and DevOps, AI/ML, data engineering and analytics, product design, mobile engineering, cybersecurity, platform engineering, and more. Our consultancy network spans the full technology spectrum.",
   },
 ];
 
@@ -125,7 +125,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
     <>
       <Background variant="hero" />
 
-      {/* Hero — tighter */}
+      {/* Hero, tighter */}
       <section className="relative pt-28 pb-10 sm:pt-32 sm:pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -160,7 +160,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
             GuardianX assists candidates in exploring technology job
             opportunities across every domain through our consultancy network.
             Below is everything you need to know about eligibility, the
-            registration process, fee structure, and what to expect — all
+            registration process, fee structure, and what to expect, all
             explained before you register.
           </motion.p>
 
@@ -192,7 +192,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
                 <span className="text-gradient-gold italic">with GuardianX</span>
               </>
             }
-            description="We welcome candidates from across the technology spectrum — from fresh graduates targeting entry-level roles to senior practitioners seeking their next leadership position. Below are the four factors we consider during qualification."
+            description="We welcome candidates from across the technology spectrum, from fresh graduates targeting entry-level roles to senior practitioners seeking their next leadership position. Below are the four factors we consider during qualification."
           />
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -217,19 +217,19 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
         </div>
       </section>
 
-      {/* Fee structure — simplified */}
+      {/* Fee structure, simplified */}
       <section className="relative py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Fee Structure"
             title={
               <>
-                Transparent pricing —
+                Transparent pricing,
                 <br />
                 <span className="text-gradient-gold italic">no hidden surprises.</span>
               </>
             }
-            description="The registration fee is paid upfront. The post-placement consultancy fee structure, payment timelines, refund conditions, and service terms are discussed with you after registration — before any employer engagement."
+            description="The registration fee is paid upfront. The post-placement consultancy fee structure, payment timelines, refund conditions, and service terms are discussed with you after registration, before any employer engagement."
           />
 
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -311,11 +311,11 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
                     <span className="text-gradient-gold italic">forwarding service.</span>
                   </>
                 }
-                description="Registration activates you in our consultancy network — our team works your profile against live requirements, prepares you for interviews, and stays engaged through offer and onboarding."
+                description="Registration activates you in our consultancy network, our team works your profile against live requirements, prepares you for interviews, and stays engaged through offer and onboarding."
               />
               <div className="mt-6">
                 <CTAButton onClick={() => onNavigate("register")}>
-                  Register Now — ₹2,000
+                  Register Now, ₹2,000
                 </CTAButton>
               </div>
             </div>
@@ -350,7 +350,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
             align="center"
             eyebrow="Frequently Asked"
             title="Admissions questions, answered."
-            description="Still have questions? Our team is available to clarify any of these points before you register — feel free to reach out via the contact page."
+            description="Still have questions? Our team is available to clarify any of these points before you register, feel free to reach out via the contact page."
           />
 
           <div className="mt-10">

@@ -41,13 +41,13 @@ const valueProps = [
     icon: Search,
     title: "Curated Tech Roles",
     description:
-      "We work across every domain of technology — from cybersecurity and software engineering to cloud, AI/ML, data, design, and platform roles. Your profile is matched against live requirements in our consultancy network, not generic job listings.",
+      "We work across every domain of technology, from cybersecurity and software engineering to cloud, AI/ML, data, design, and platform roles. Your profile is matched against live requirements in our consultancy network, not generic job listings.",
   },
   {
     icon: MapPin,
     title: "Location-Aware Matching",
     description:
-      "Share your preferred location — Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai, or remote — and we prioritise opportunities that fit your geography. Relocation-friendly employers and remote-first teams are part of the network.",
+      "Share your preferred location, Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai, or remote, and we prioritise opportunities that fit your geography. Relocation-friendly employers and remote-first teams are part of the network.",
   },
   {
     icon: Handshake,
@@ -59,7 +59,7 @@ const valueProps = [
     icon: Lock,
     title: "Confidential & Compliant",
     description:
-      "Client company names remain confidential during initial stages, subject to client agreements. Your data is shared only with employers actively considering your profile — never blasted to mailing lists or public job boards.",
+      "Client company names remain confidential during initial stages, subject to client agreements. Your data is shared only with employers actively considering your profile, never blasted to mailing lists or public job boards.",
   },
 ];
 
@@ -165,8 +165,8 @@ const stats = [
 const offerings = [
   "Personalised recruitment assistance across every domain of technology",
   "Direct introductions to employers in our consultancy network",
-  "Confidential matching — your profile is never spammed",
-  "Transparent fee structure — all terms disclosed before registration",
+  "Confidential matching, your profile is never spammed",
+  "Transparent fee structure, all terms disclosed before registration",
   "End-to-end coordination through offer and onboarding",
   "Preferred location prioritised during role matching",
 ];
@@ -177,7 +177,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <Background variant="hero" />
       <Noise />
 
-      {/* HERO — split layout: text + illustration */}
+      {/* HERO, split layout: text + illustration */}
       <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -218,7 +218,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 className="mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed"
               >
                 GuardianX connects skilled professionals with leading tech
-                employers across every domain — engineering, cybersecurity,
+                employers across every domain, engineering, cybersecurity,
                 cloud, AI/ML, data, design, and more. We match you based on
                 skills, qualifications, experience, and preferred location,
                 and stay engaged through every stage of the hiring process.
@@ -231,7 +231,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 className="mt-8 flex flex-wrap items-center gap-3"
               >
                 <CTAButton onClick={() => onNavigate("register")}>
-                  Begin Registration — ₹2,000
+                  Begin Registration, ₹2,000
                 </CTAButton>
                 <CTAButton
                   variant="ghost"
@@ -288,7 +288,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Stats strip — tighter */}
+      {/* Stats strip, tighter */}
       <section className="relative py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -299,7 +299,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Value props — Bento grid */}
+      {/* Value props, Bento grid */}
       <section className="relative py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -346,7 +346,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             align="center"
             eyebrow="How It Works"
             title="From registration to placement"
-            description="A transparent four-step process that keeps you informed at every stage. Final selection and offer letters are subject to the employer's hiring process — but we coordinate with you end-to-end."
+            description="A transparent four-step process that keeps you informed at every stage. Final selection and offer letters are subject to the employer's hiring process, but we coordinate with you end-to-end."
           />
 
           <div className="mt-16">
@@ -373,7 +373,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 <span className="text-gradient-gold italic">recruit for.</span>
               </>
             }
-            description="Our consultancy network spans employers hiring across the full technology spectrum — from entry-level engineers to senior architects and design leads. Below is a representative sample of role categories we work with."
+            description="Our consultancy network spans employers hiring across the full technology spectrum, from entry-level engineers to senior architects and design leads. Below is a representative sample of role categories we work with."
           />
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -390,7 +390,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Premium bento grid — feature showcase */}
+      {/* Premium bento grid, feature showcase */}
       <section className="relative py-16 sm:py-20 border-y border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -419,14 +419,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
                     For ₹2,000 registration, you get a curated, consultancy-driven
-                    job search — with our team advocating for you across the tech
+                    job search, with our team advocating for you across the tech
                     employer network. The post-placement fee only applies once you
                     actually receive and accept an offer.
                   </p>
                 </div>
                 <div className="mt-6">
                   <CTAButton onClick={() => onNavigate("register")}>
-                    Register Now — ₹2,000
+                    Register Now, ₹2,000
                   </CTAButton>
                 </div>
               </div>
@@ -486,7 +486,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     Pay ₹2,000 to register. The post-placement consultancy fee
-                    only applies once you receive and accept an offer — full
+                    only applies once you receive and accept an offer, full
                     terms are discussed with you after registration.
                   </p>
                 </div>
@@ -538,11 +538,11 @@ export function HomePage({ onNavigate }: HomePageProps) {
                     <span className="text-gradient-gold italic">advocates for you.</span>
                   </>
                 }
-                description="For ₹2,000 registration, you get a curated, consultancy-driven job search — with our team advocating for you across the technology employer network."
+                description="For ₹2,000 registration, you get a curated, consultancy-driven job search, with our team advocating for you across the technology employer network."
               />
               <div className="mt-6">
                 <CTAButton onClick={() => onNavigate("register")}>
-                  Register Now — ₹2,000
+                  Register Now, ₹2,000
                 </CTAButton>
               </div>
             </div>

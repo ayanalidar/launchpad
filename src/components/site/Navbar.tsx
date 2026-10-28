@@ -52,7 +52,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
             <button
               onClick={() => handleNav("home")}
               className="group"
-              aria-label="GuardianX Recruitment — Home"
+              aria-label="GuardianX Recruitment, Home"
             >
               <BrandLogo />
             </button>
@@ -165,7 +165,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
                 onClick={() => handleNav("register")}
                 className="mt-6 inline-flex items-center justify-center gap-2 rounded-md bg-gold px-6 py-4 text-sm font-semibold text-gold-foreground hover:shadow-[0_0_30px_-5px] hover:shadow-gold/40 transition-all"
               >
-                Register Now — ₹2,000
+                Register Now, ₹2,000
                 <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
               </motion.button>
             </motion.nav>

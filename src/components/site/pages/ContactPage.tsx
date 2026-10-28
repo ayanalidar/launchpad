@@ -77,7 +77,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
     <>
       <Background variant="hero" />
 
-      {/* Hero — tighter */}
+      {/* Hero, tighter */}
       <section className="relative pt-28 pb-10 sm:pt-32 sm:pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -111,7 +111,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
           >
             Have questions about the registration process, fee structure, or
             placement timeline? We encourage candidates to clarify any
-            questions before proceeding. Reach out — our team responds within
+            questions before proceeding. Reach out, our team responds within
             two business days.
           </motion.p>
         </div>
@@ -374,14 +374,14 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                       If your questions are answered, start your registration
-                      today — the process takes about 5 minutes.
+                      today, the process takes about 5 minutes.
                     </p>
                     <CTAButton
                       onClick={() =>
                         (window.location.hash = "register")
                       }
                     >
-                      Register Now — ₹2,000
+                      Register Now, ₹2,000
                     </CTAButton>
                   </div>
                 </div>
@@ -436,7 +436,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
                 </h3>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Our sibling property — GuardianX Security — focuses on
+                Our sibling property, GuardianX Security, focuses on
                 cybersecurity services and solutions for enterprises.
               </p>
               <a

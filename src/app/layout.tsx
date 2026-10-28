@@ -26,7 +26,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GuardianX Recruitment & Career Assistance Consultancy",
   description:
-    "GuardianX is a premier technology recruitment and career assistance consultancy. We connect skilled professionals with leading roles across every domain of technology — cybersecurity, engineering, cloud, AI/ML, data, design, and more — through our consultancy network.",
+    "GuardianX is a premier technology recruitment and career assistance consultancy. We connect skilled professionals with leading roles across every domain of technology, cybersecurity, engineering, cloud, AI/ML, data, design, and more, through our consultancy network.",
   keywords: [
     "technology recruitment consultancy",
     "GuardianX Recruitment",

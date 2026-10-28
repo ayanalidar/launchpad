@@ -161,7 +161,7 @@ const recruitmentProcess = [
     step: "03",
     title: "Employer Introduction",
     description:
-      "Subject to client agreements, we introduce your profile to the employer. Company names may remain confidential during initial stages — full employer details shared when you are shortlisted.",
+      "Subject to client agreements, we introduce your profile to the employer. Company names may remain confidential during initial stages, full employer details shared when you are shortlisted.",
     icon: <Building2 className="h-6 w-6" />,
   },
   {
@@ -175,7 +175,7 @@ const recruitmentProcess = [
     step: "05",
     title: "Offer &amp; Onboarding",
     description:
-      "Upon successful selection, we coordinate offer letter issuance. The post-placement consultancy fee terms — discussed with you after registration — apply at this stage.",
+      "Upon successful selection, we coordinate offer letter issuance. The post-placement consultancy fee terms, discussed with you after registration, apply at this stage.",
     icon: <Award className="h-6 w-6" />,
   },
 ];
@@ -183,9 +183,9 @@ const recruitmentProcess = [
 const confidentialityPoints = [
   "Specific client company names may remain confidential during initial stages, subject to client agreements.",
   "Relevant role details, employment terms, and expectations are shared with you at the appropriate stage of the process.",
-  "Your candidate profile is shared only with employers actively considering you — never with public job boards or mailing lists.",
+  "Your candidate profile is shared only with employers actively considering you, never with public job boards or mailing lists.",
   "You will be informed of the employer identity before any interview is scheduled, with sufficient time to review the opportunity.",
-  "We respect candidate privacy — your current employer is never notified of your job search without your explicit consent.",
+  "We respect candidate privacy, your current employer is never notified of your job search without your explicit consent.",
 ];
 
 export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
@@ -193,7 +193,7 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
     <>
       <Background variant="hero" />
 
-      {/* Hero — tighter */}
+      {/* Hero, tighter */}
       <section className="relative pt-28 pb-10 sm:pt-32 sm:pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -226,7 +226,7 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
             className="mt-6 max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             We coordinate with our consultancy network to help candidates
-            explore relevant technology roles across every domain — and
+            explore relevant technology roles across every domain, and
             understand the recruitment process. Final selection and offer
             letters are subject to the employer&apos;s hiring process, but we
             stay engaged end-to-end.
@@ -259,7 +259,7 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
         </div>
       </section>
 
-      {/* Role categories — broader tech scope */}
+      {/* Role categories, broader tech scope */}
       <section className="relative py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -271,7 +271,7 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
                 <span className="text-gradient-gold italic">recruit for.</span>
               </>
             }
-            description="Our consultancy network spans employers hiring across the full technology spectrum. Below is a representative sample of role categories we coordinate placements for — from entry-level engineers to senior leaders."
+            description="Our consultancy network spans employers hiring across the full technology spectrum. Below is a representative sample of role categories we coordinate placements for, from entry-level engineers to senior leaders."
           />
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -301,7 +301,7 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
             align="center"
             eyebrow="Recruitment Process"
             title="How we coordinate placements"
-            description="A transparent five-stage process — from profile activation to offer and onboarding. We work alongside the employer's hiring process, advocating for you at every step."
+            description="A transparent five-stage process, from profile activation to offer and onboarding. We work alongside the employer's hiring process, advocating for you at every step."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-5">
@@ -361,7 +361,7 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
               <p className="mt-4 text-base text-muted-foreground leading-relaxed">
                 Many employers in our network require discretion during the
                 initial stages of recruitment. We balance that with your right
-                to make informed decisions — full employer details are always
+                to make informed decisions, full employer details are always
                 shared before any interview is scheduled.
               </p>
               <div className="mt-6">

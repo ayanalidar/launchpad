@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 /**
- * Hero illustration — a sophisticated SVG composition:
+ * Hero illustration, a sophisticated SVG composition:
  * central core (career hub) + orbital tech-domain icons + glass stat cards.
  */
 export function HeroIllustration() {

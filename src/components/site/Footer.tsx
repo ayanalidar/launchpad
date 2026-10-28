@@ -27,7 +27,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-md">
               Premier technology recruitment &amp; career assistance consultancy.
               We connect skilled professionals with leading roles across every
-              domain of technology — through our consultancy network, based on
+              domain of technology, through our consultancy network, based on
               your skills, qualifications, experience, and preferred location.
             </p>
             <a
