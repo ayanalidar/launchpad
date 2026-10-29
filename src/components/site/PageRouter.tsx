@@ -9,6 +9,7 @@ import { AdmissionsPage } from "./pages/AdmissionsPage";
 import { PlacementsPage } from "./pages/PlacementsPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ContactPage } from "./pages/ContactPage";
+import { WhatsAppButton } from "./ui/WhatsAppButton";
 
 export function PageRouter() {
   const { page, navigate } = usePageRouter();
@@ -36,6 +37,9 @@ export function PageRouter() {
       </main>
 
       <Footer onNavigate={navigate} />
+
+      {/* Floating WhatsApp button, appears on all pages after scroll */}
+      <WhatsAppButton />
     </div>
   );
 }

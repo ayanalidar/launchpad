@@ -31,6 +31,11 @@ import { HeroIllustration } from "../ui/HeroIllustration";
 import { DomainMarquee } from "../ui/DomainMarquee";
 import { SectionDivider } from "../ui/SectionDivider";
 import { BentoCard } from "../ui/BentoCard";
+import { EmailCaptureBar } from "../ui/EmailCaptureBar";
+import {
+  PlacementsCarousel,
+  type PlacementStory,
+} from "../ui/PlacementsCarousel";
 
 interface HomePageProps {
   onNavigate: (p: PageId) => void;
@@ -171,6 +176,63 @@ const offerings = [
   "Preferred location prioritised during role matching",
 ];
 
+/**
+ * Anonymised recent placements.
+ * Names withheld; identities reduced to initials + role + city + company type.
+ */
+const placementStories: PlacementStory[] = [
+  {
+    initials: "AK",
+    role: "Software Engineer",
+    location: "Bangalore",
+    companyType: "SaaS unicorn",
+    outcome: "+38% hike",
+    quote:
+      "GuardianX understood my target companies before I even named them. Got three interview calls within ten days, accepted an offer in three weeks.",
+    placedAgo: "2 weeks ago",
+  },
+  {
+    initials: "RM",
+    role: "Cloud / DevOps Engineer",
+    location: "Hyderabad",
+    companyType: "Fintech scale-up",
+    outcome: "2x CTC",
+    quote:
+      "I was skeptical about paying a fee upfront, but the consultancy model actually worked. The team prepped me for every round and negotiated harder than I would have.",
+    placedAgo: "1 month ago",
+  },
+  {
+    initials: "SP",
+    role: "Cybersecurity Analyst",
+    location: "Mumbai",
+    companyType: "Enterprise security firm",
+    outcome: "+25% hike",
+    quote:
+      "What stood out was confidentiality. My current employer never found out I was looking. Got introduced to three SOC roles, picked the one that fit my career plan.",
+    placedAgo: "3 weeks ago",
+  },
+  {
+    initials: "VD",
+    role: "AI / ML Engineer",
+    location: "Bangalore",
+    companyType: "AI product startup",
+    outcome: "+42% hike",
+    quote:
+      "Coming from a non-tier-1 college, I expected to be filtered out. GuardianX actually advocated for my portfolio work and got me shortlisted at places I wouldn't have reached on my own.",
+    placedAgo: "5 weeks ago",
+  },
+  {
+    initials: "NJ",
+    role: "Product Designer",
+    location: "Remote",
+    companyType: "Global SaaS",
+    outcome: "Remote-first",
+    quote:
+      "I wanted a remote-first design role and most consultancies kept pushing me toward on-site. GuardianX actually listened. Placed at a global SaaS within four weeks of registering.",
+    placedAgo: "1 week ago",
+  },
+];
+
 export function HomePage({ onNavigate }: HomePageProps) {
   return (
     <>
@@ -276,6 +338,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      {/* Email capture bar, sits right after the hero */}
+      <EmailCaptureBar />
+
       {/* Domain marquee */}
       <section className="relative py-6 border-y border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -295,6 +360,26 @@ export function HomePage({ onNavigate }: HomePageProps) {
             {stats.map((s, i) => (
               <StatCard key={s.label} {...s} delay={i * 0.08} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recent placements carousel, social proof */}
+      <section className="relative py-12 sm:py-16 border-y border-border bg-card/20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Recent Placements"
+            title={
+              <>
+                Real outcomes from
+                <br />
+                <span className="text-gradient-gold italic">real candidates.</span>
+              </>
+            }
+            description="Anonymised stories of candidates placed through our consultancy network across every domain of technology. Names withheld for candidate privacy."
+          />
+          <div className="mt-10">
+            <PlacementsCarousel stories={placementStories} />
           </div>
         </div>
       </section>

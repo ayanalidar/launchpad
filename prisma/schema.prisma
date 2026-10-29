@@ -28,7 +28,7 @@ model Post {
   updatedAt DateTime @updatedAt
 }
 
-// GuardianX Academy — Candidate Registration
+// GuardianX Recruitment, Candidate Registration
 model Registration {
   id              String   @id @default(cuid())
   // Personal
@@ -71,6 +71,16 @@ model ContactMessage {
   phone     String?
   subject   String   @default("general")
   message   String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+// Email subscribers captured from the homepage sticky bar
+model EmailSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String   @default("home_sticky_bar")
   createdAt DateTime @default(now())
 
   @@index([createdAt])
