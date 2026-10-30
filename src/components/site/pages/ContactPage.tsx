@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 import {
   Mail,
   Linkedin,
-  Globe,
   ShieldCheck,
   ArrowUpRight,
   MessageSquare,
   Clock,
   CheckCircle2,
-  Building2,
+  GraduationCap,
+  Briefcase,
 } from "lucide-react";
 import { type PageId } from "../use-router";
 import { Background } from "../ui/Background";
@@ -324,11 +324,11 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
-                      <Globe className="h-4 w-4" />
+                      <GraduationCap className="h-4 w-4" />
                     </div>
                     <div>
                       <h3 className="font-display text-base font-semibold text-foreground mb-1">
-                        GuardianX Recruitment
+                        GuardianX Academy
                       </h3>
                       <p className="font-mono text-xs text-muted-foreground group-hover:text-gold transition-colors">
                         academy.guardianx.cloud
@@ -396,15 +396,16 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Our Presence"
-            title="GuardianX Recruitment"
-            description="GuardianX Recruitment & Career Assistance Consultancy is the technology recruitment arm of the GuardianX family, alongside GuardianX Security."
+            title="The GuardianX Family"
+            description="Three specialised properties under one family. This site is the recruitment consultancy; the academy is where we train candidates; and GuardianX Security handles enterprise cybersecurity services."
           />
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-6 rounded-lg border border-border bg-card/30">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Recruitment consultancy (this site) */}
+            <div className="p-6 rounded-lg border border-gold/30 bg-gold/[0.03]">
               <div className="flex items-center gap-3 mb-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
-                  <Building2 className="h-4 w-4" />
+                  <Briefcase className="h-4 w-4" />
                 </div>
                 <h3 className="font-display text-lg font-semibold text-foreground">
                   GuardianX Recruitment
@@ -412,8 +413,35 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                 Technology Recruitment &amp; Career Assistance Consultancy.
-                We assist candidates in exploring technology job opportunities
-                across every domain through our consultancy network.
+                You&apos;re on this site right now. We assist candidates in
+                exploring technology job opportunities across every domain
+                through our consultancy network.
+              </p>
+              <button
+                onClick={() =>
+                  (window.location.hash = "register")
+                }
+                className="inline-flex items-center gap-2 text-sm text-gold hover:underline"
+              >
+                Register with us
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
+
+            {/* Academy (training) */}
+            <div className="p-6 rounded-lg border border-border bg-card/30">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
+                  <GraduationCap className="h-4 w-4" />
+                </div>
+                <h3 className="font-display text-lg font-semibold text-foreground">
+                  GuardianX Academy
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                Where we train candidates. Cybersecurity and technology
+                upskilling programs designed to prepare professionals for
+                roles across the industry.
               </p>
               <a
                 href="https://www.academy.guardianx.cloud"
@@ -426,6 +454,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
               </a>
             </div>
 
+            {/* Security (enterprise) */}
             <div className="p-6 rounded-lg border border-border bg-card/30">
               <div className="flex items-center gap-3 mb-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">

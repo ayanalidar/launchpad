@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   ArrowUpRight,
   Linkedin,
-  Globe,
   Sparkles,
   Briefcase,
   Layers,
@@ -19,6 +18,7 @@ import {
   Zap,
   TrendingUp,
   Award,
+  GraduationCap,
 } from "lucide-react";
 import { type PageId } from "../use-router";
 import { Background, Noise } from "../ui/Background";
@@ -704,11 +704,11 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
-                      <Globe className="h-5 w-5" strokeWidth={1.75} />
+                      <GraduationCap className="h-5 w-5" strokeWidth={1.75} />
                     </div>
                     <div>
                       <div className="font-display text-base font-semibold text-foreground">
-                        GuardianX Recruitment
+                        GuardianX Academy
                       </div>
                       <div className="font-mono text-xs text-muted-foreground mt-1">
                         academy.guardianx.cloud

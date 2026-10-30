@@ -2,11 +2,11 @@
 
 import {
   Linkedin,
-  Globe,
   Mail,
   ArrowUpRight,
   ShieldCheck,
   MapPin,
+  GraduationCap,
 } from "lucide-react";
 import { PAGES, type PageId } from "./use-router";
 import { BrandLogo } from "./ui/BrandLogo";
@@ -90,10 +90,10 @@ export function Footer({ onNavigate }: FooterProps) {
                   rel="noopener noreferrer"
                   className="group flex items-start gap-3 text-sm"
                 >
-                  <Globe className="h-4 w-4 text-gold mt-0.5 shrink-0" />
+                  <GraduationCap className="h-4 w-4 text-gold mt-0.5 shrink-0" />
                   <span>
                     <span className="block text-foreground">
-                      GuardianX Recruitment
+                      GuardianX Academy
                     </span>
                     <span className="block text-muted-foreground group-hover:text-gold transition-colors">
                       academy.guardianx.cloud

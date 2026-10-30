@@ -47,7 +47,6 @@ export const metadata: Metadata = {
     title: "GuardianX Recruitment & Career Assistance Consultancy",
     description:
       "Premium technology recruitment and career assistance. Connecting skilled professionals with leading roles across every domain of technology.",
-    url: "https://academy.guardianx.cloud",
     siteName: "GuardianX Recruitment",
     type: "website",
   },
