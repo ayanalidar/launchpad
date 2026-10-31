@@ -74,12 +74,14 @@ Visit `http://localhost:3000` for the public site, or `http://localhost:3000/#ad
 
 This project uses PostgreSQL via Prisma. [Supabase](https://supabase.com) is recommended for production hosting (free tier, persists data on Vercel/Netlify).
 
+> **Important**: Use the **Session Pooler** connection string (not the direct connection). The direct connection uses IPv6 which doesn't work in many hosting environments (Vercel, Netlify, etc.). The pooler uses IPv4 and is recommended by Supabase.
+
 ### Steps
 
 1. **Create a Supabase project** at https://supabase.com/dashboard
 2. **Get your connection string**:
-   - Go to Project Settings → Database → Connection string → URI
-   - Format: `postgresql://postgres:[YOUR-PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres`
+   - Go to Project Settings → Database → Connection string → **Session pooler**
+   - Format: `postgresql://postgres.[PROJECT-REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:5432/postgres`
 3. **Set it as `DATABASE_URL`** in your `.env` file (local) and in your hosting platform's env vars (production)
 4. **Create the schema**:
    ```bash
@@ -87,7 +89,7 @@ This project uses PostgreSQL via Prisma. [Supabase](https://supabase.com) is rec
    ```
 5. **Seed initial content** (roles, FAQs, placement stories, jobs, site settings):
    ```bash
-   bun run scripts/seed.ts
+   bun run db:seed
    ```
 
 ## 🛠 Tech Stack
