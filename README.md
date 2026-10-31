@@ -46,13 +46,13 @@ bun install
 
 # Set up environment variables
 cp .env.example .env
-# Edit .env with your values
+# Edit .env with your Supabase DATABASE_URL, WhatsApp number, admin password
 
-# Set up database
+# Create database tables
 bun run db:push
 
 # Seed initial content (roles, placement stories, FAQs, jobs, site settings)
-bun run scripts/seed.ts
+bun run db:seed
 
 # Start dev server
 bun run dev
@@ -64,11 +64,31 @@ Visit `http://localhost:3000` for the public site, or `http://localhost:3000/#ad
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `DATABASE_URL` | Yes | SQLite path or Postgres/MySQL URL |
+| `DATABASE_URL` | Yes | PostgreSQL connection string (Supabase recommended) |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | WhatsApp number with country code, no + |
 | `ADMIN_PASSWORD` | Yes | Admin panel password (change in production) |
 | `RAZORPAY_KEY_ID` | Optional | Razorpay key ID (leave empty for mock mode) |
 | `RAZORPAY_KEY_SECRET` | Optional | Razorpay key secret |
+
+## 🗄️ Database Setup (Supabase)
+
+This project uses PostgreSQL via Prisma. [Supabase](https://supabase.com) is recommended for production hosting (free tier, persists data on Vercel/Netlify).
+
+### Steps
+
+1. **Create a Supabase project** at https://supabase.com/dashboard
+2. **Get your connection string**:
+   - Go to Project Settings → Database → Connection string → URI
+   - Format: `postgresql://postgres:[YOUR-PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres`
+3. **Set it as `DATABASE_URL`** in your `.env` file (local) and in your hosting platform's env vars (production)
+4. **Create the schema**:
+   ```bash
+   bun run db:push
+   ```
+5. **Seed initial content** (roles, FAQs, placement stories, jobs, site settings):
+   ```bash
+   bun run scripts/seed.ts
+   ```
 
 ## 🛠 Tech Stack
 
