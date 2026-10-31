@@ -85,3 +85,108 @@ model EmailSubscriber {
 
   @@index([createdAt])
 }
+
+// Site-wide settings (singleton row, id = "default")
+model SiteSettings {
+  id                String  @id @default("default")
+  registrationFee   Int     @default(2000)
+  whatsappNumber    String  @default("917006712347")
+  linkedinUrl       String  @default("https://www.linkedin.com/company/guardianx-academy/")
+  academyUrl        String  @default("https://www.academy.guardianx.cloud")
+  securityUrl       String  @default("https://www.guardianx.in")
+  heroHeadline      String  @default("Launch your technology career with us.")
+  heroBody          String  @default("GuardianX Launchpad connects skilled professionals with leading tech employers across every domain. We match you based on skills, qualifications, experience, and preferred location, and stay engaged through every stage of the hiring process.")
+  postPlacementFeeDescription String @default("A consultancy fee applies upon successful placement. The complete fee structure, payment timelines, refund conditions, and service terms are explained to you after registration, before any employer engagement.")
+  responseTimeHours Int     @default(48)
+  updatedAt         DateTime @updatedAt
+}
+
+// Role categories (powers Placements page + Register dropdown + Role deep-dive)
+model Role {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  level       String   @default("Entry to Senior")
+  description String
+  skills      String   // comma-separated
+  category    String   @default("Engineering") // Engineering, AI/Data, Security, Design, Leadership
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  // Optional deep-dive content
+  tagline     String?
+  overview    String?
+  responsibilities String? // newline-separated
+  requiredSkills  String? // JSON: [{name, level}]
+  interviewQuestions String? // JSON: [{question, difficulty}]
+  careerPath   String? // JSON: [{stage, description, typicalCTC}]
+  certifications String? // comma-separated
+  salaryMin    Int? // LPA
+  salaryMax    Int?
+  salaryMedian Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([category])
+}
+
+// Placement success stories (Home page carousel)
+model PlacementStory {
+  id          String   @id @default(cuid())
+  initials    String
+  role        String
+  location    String
+  companyType String
+  outcome     String
+  quote       String
+  placedAgo   String
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isActive])
+}
+
+// FAQ items (Admissions page)
+model FAQItem {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String   @default("admissions") // admissions, general, payments
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([category])
+}
+
+// Job openings (shown on Candidate Dashboard as matched roles)
+model JobOpening {
+  id          String   @id @default(cuid())
+  title       String
+  company     String
+  location    String
+  salary      String
+  matchScore  Int      @default(80)
+  postedAgo   String   @default("1 day ago")
+  status      String   @default("new") // new, shortlisted, interviewing, closed
+  roleSlug    String? // link to Role
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([status])
+}
+
+// Contact message resolution status
+model ContactMessageStatus {
+  id        String   @id @default(cuid())
+  messageId String   @unique
+  resolved  Boolean  @default(false)
+  notes     String?
+  updatedAt DateTime @updatedAt
+}

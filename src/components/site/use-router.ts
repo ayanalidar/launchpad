@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from "react";
  * `register`, `dashboard`, `employers`, `resume-review`, and `role` (dynamic)
  * are intentionally omitted from PAGES so they don't clutter the navbar;
  * the dedicated CTA buttons and in-page links route there.
+ * `admin` is also omitted; it's accessed via direct URL #admin.
  */
 export type PageId =
   | "home"
@@ -16,7 +17,8 @@ export type PageId =
   | "contact"
   | "dashboard"
   | "employers"
-  | "resume-review";
+  | "resume-review"
+  | "admin";
 
 export const PAGES: { id: PageId; label: string; href: string }[] = [
   { id: "home", label: "Home", href: "#home" },
@@ -44,6 +46,7 @@ export function parseHash(): PageId {
     "dashboard",
     "employers",
     "resume-review",
+    "admin",
   ];
   return valid.includes(raw as PageId) ? (raw as PageId) : "home";
 }

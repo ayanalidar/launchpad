@@ -18,6 +18,7 @@ import { WhatsAppButton } from "./ui/WhatsAppButton";
 import { CustomCursor } from "./ui/CustomCursor";
 import { PageTransition } from "./ui/PageTransition";
 import { Skeleton } from "./ui/Skeleton";
+import { AdminPage } from "./admin/AdminPage";
 
 // Lazy-load the heavier pages for route-level code splitting
 const LazyRegisterPage = lazy(() =>
@@ -95,6 +96,9 @@ export function PageRouter() {
                   <Suspense fallback={<PageLoader />}>
                     <LazyResumeReviewPage onNavigate={navigate} />
                   </Suspense>
+                )}
+                {page === "admin" && (
+                  <AdminPage onExit={() => navigate("home")} />
                 )}
               </>
             )}
