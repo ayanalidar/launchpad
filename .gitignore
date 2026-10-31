@@ -52,3 +52,16 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# Database (contains real user data, never commit)
+/db/
+*.db
+*.db-journal
+
+# Local downloads / screenshots
+/download/
+/upload/
+
+# Build artifacts
+.zscripts/dev.log
+.zscripts/dev.pid
