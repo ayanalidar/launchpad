@@ -21,6 +21,7 @@ import { CTAButton } from "../ui/CTAButton";
 import { FAQ } from "../ui/FAQ";
 import { SectionDivider } from "../ui/SectionDivider";
 import { BentoCard } from "../ui/BentoCard";
+import { FloatingOrbs } from "../ui/FloatingOrbs";
 
 interface AdmissionsPageProps {
   onNavigate: (p: PageId) => void;
@@ -182,6 +183,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
 
       {/* Eligibility */}
       <section className="relative py-12 sm:py-16 border-y border-border bg-card/20">
+        <FloatingOrbs count={2} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Eligibility"

@@ -1,6 +1,6 @@
 "use client";
 
-import { Rocket } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface BrandLogoProps {
@@ -9,17 +9,28 @@ interface BrandLogoProps {
 }
 
 /**
- * Brand logo: typographic GuardianX Launchpad + Rocket icon.
+ * Brand logo: GuardianX shield image + wordmark.
  * - "full": "GuardianX Launchpad" wordmark + "Recruitment & Career Assistance" subtitle
  * - "compact": same wordmark + "Recruitment Consultancy" short subtitle (for navbar)
  */
 export function BrandLogo({ variant = "compact", className }: BrandLogoProps) {
   return (
     <div className={cn("flex items-center gap-3", className)}>
+      {/* GuardianX shield logo */}
       <div className="relative shrink-0">
+        {/* Glow on hover */}
         <div className="absolute inset-0 rounded-md bg-gold/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="relative flex h-10 w-10 items-center justify-center rounded-md border border-gold/40 bg-gradient-to-br from-gold/20 to-transparent">
-          <Rocket className="h-5 w-5 text-gold" strokeWidth={1.75} />
+        <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-md border border-gold/30 bg-black">
+          <Image
+            src="/logo.png"
+            alt="GuardianX Launchpad logo"
+            width={44}
+            height={44}
+            className="h-full w-full object-contain"
+            priority
+          />
+          {/* Subtle gold inner ring */}
+          <div className="pointer-events-none absolute inset-0 rounded-md ring-1 ring-inset ring-gold/20" />
         </div>
       </div>
       <div className="flex flex-col items-start leading-none">

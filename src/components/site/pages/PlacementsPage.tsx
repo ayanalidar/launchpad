@@ -23,6 +23,7 @@ import { CTAButton } from "../ui/CTAButton";
 import { RoleCard } from "../ui/RoleCard";
 import { StatCard } from "../ui/StatCard";
 import { SectionDivider } from "../ui/SectionDivider";
+import { FloatingOrbs } from "../ui/FloatingOrbs";
 
 interface PlacementsPageProps {
   onNavigate: (p: PageId) => void;
@@ -261,6 +262,7 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
 
       {/* Role categories, broader tech scope */}
       <section className="relative py-12 sm:py-16">
+        <FloatingOrbs count={2} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Role Categories"

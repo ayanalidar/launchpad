@@ -20,6 +20,8 @@ import {
   Award,
   GraduationCap,
   Rocket,
+  Building2,
+  Target,
 } from "lucide-react";
 import { type PageId } from "../use-router";
 import { Background, Noise } from "../ui/Background";
@@ -34,6 +36,7 @@ import { SectionDivider } from "../ui/SectionDivider";
 import { BentoCard } from "../ui/BentoCard";
 import { EmailCaptureBar } from "../ui/EmailCaptureBar";
 import { OurFamilyStrip } from "../ui/OurFamilyStrip";
+import { FloatingOrbs } from "../ui/FloatingOrbs";
 import {
   PlacementsCarousel,
   type PlacementStory,
@@ -148,24 +151,28 @@ const stats = [
     suffix: "+",
     label: "Consultancy Partners",
     description: "Active tech employers across India",
+    icon: Building2,
   },
   {
     value: 15,
     suffix: "+",
     label: "Tech Domains",
     description: "Engineering, data, design, security & more",
+    icon: Layers,
   },
   {
     value: 6,
     suffix: "+",
     label: "Tier-1 Cities",
     description: "Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai",
+    icon: MapPin,
   },
   {
     value: 95,
     suffix: "%",
     label: "Profile Review Rate",
     description: "Of registered candidates screened within 5 business days",
+    icon: Target,
   },
 ];
 
@@ -431,6 +438,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
       {/* Process flow */}
       <section className="relative py-16 sm:py-20 border-y border-border bg-card/20">
+        <FloatingOrbs />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             align="center"
@@ -482,6 +490,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
       {/* Premium bento grid, feature showcase */}
       <section className="relative py-16 sm:py-20 border-y border-border bg-card/20">
+        <FloatingOrbs count={2} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="The GuardianX Edge"
@@ -616,6 +625,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
       {/* What's included */}
       <section className="relative py-16 sm:py-20">
+        <FloatingOrbs count={2} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5">

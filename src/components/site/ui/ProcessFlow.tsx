@@ -24,8 +24,16 @@ export function ProcessFlow({ steps, className }: ProcessFlowProps) {
         className
       )}
     >
-      {/* Connecting line (desktop) */}
-      <div className="hidden md:block absolute top-[3.25rem] left-[12%] right-[12%] h-px bg-gradient-to-r from-gold/0 via-gold/40 to-gold/0" />
+      {/* Connecting line (desktop) with animated pulse */}
+      <div className="hidden md:block absolute top-[3.25rem] left-[12%] right-[12%] h-px bg-gradient-to-r from-gold/0 via-gold/40 to-gold/0 overflow-hidden">
+        <motion.div
+          initial={{ x: "-100%" }}
+          whileInView={{ x: "100%" }}
+          viewport={{ once: false, margin: "-100px" }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-gold to-transparent"
+        />
+      </div>
 
       {steps.map((s, i) => (
         <motion.div
@@ -34,15 +42,43 @@ export function ProcessFlow({ steps, className }: ProcessFlowProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: i * 0.12 }}
-          className="relative flex flex-col items-center text-center"
+          className="relative flex flex-col items-center text-center group"
         >
-          {/* Step circle */}
+          {/* Step circle with rotating ring decoration */}
           <div className="relative mb-6">
-            <div className="absolute inset-0 rounded-full bg-gold/20 blur-xl" />
-            <div className="relative flex h-[6.5rem] w-[6.5rem] items-center justify-center rounded-full border border-gold/40 bg-card/80 backdrop-blur-sm">
+            {/* Outer rotating dashed ring (appears on hover) */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute inset-[-8px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            >
+              <svg viewBox="0 0 100 100" className="h-full w-full">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="48"
+                  fill="none"
+                  stroke="oklch(0.78 0.16 75 / 0.6)"
+                  strokeWidth="1"
+                  strokeDasharray="4 4"
+                />
+              </svg>
+            </motion.div>
+
+            {/* Outer glow */}
+            <div className="absolute inset-0 rounded-full bg-gold/20 blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* Main circle */}
+            <div className="relative flex h-[6.5rem] w-[6.5rem] items-center justify-center rounded-full border border-gold/40 bg-card/80 backdrop-blur-sm transition-colors duration-300 group-hover:border-gold/70 group-hover:bg-card">
               <div className="flex flex-col items-center">
                 {s.icon ? (
-                  <div className="text-gold">{s.icon}</div>
+                  <div className="text-gold transition-transform duration-500 group-hover:scale-110">
+                    {s.icon}
+                  </div>
                 ) : (
                   <span className="font-display text-3xl font-semibold text-gradient-gold">
                     {s.step}
@@ -50,12 +86,19 @@ export function ProcessFlow({ steps, className }: ProcessFlowProps) {
                 )}
               </div>
             </div>
+
             {/* Step badge */}
-            <div className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full border border-gold/60 bg-background">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.12 + 0.3, type: "spring", stiffness: 200 }}
+              className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full border border-gold/60 bg-background"
+            >
               <span className="font-mono text-[10px] text-gold">
                 {String(i + 1).padStart(2, "0")}
               </span>
-            </div>
+            </motion.div>
           </div>
 
           <h3 className="font-display text-lg font-semibold text-foreground mb-2">

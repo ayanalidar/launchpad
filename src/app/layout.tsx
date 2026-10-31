@@ -41,7 +41,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "GuardianX Launchpad" }],
   icons: {
-    icon: "/logo.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "GuardianX Launchpad, Recruitment & Career Assistance Consultancy",
@@ -49,12 +54,14 @@ export const metadata: Metadata = {
       "Premium technology recruitment and career assistance. Connecting skilled professionals with leading roles across every domain of technology.",
     siteName: "GuardianX Launchpad",
     type: "website",
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: "GuardianX Logo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "GuardianX Launchpad, Recruitment & Career Assistance Consultancy",
     description:
       "Premium technology recruitment and career assistance consultancy.",
+    images: ["/logo.png"],
   },
 };
 

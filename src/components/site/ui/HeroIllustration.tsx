@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ShieldCheck,
   Code2,
@@ -12,7 +13,6 @@ import {
   Smartphone,
   Cpu,
   LineChart,
-  Rocket,
 } from "lucide-react";
 
 /**
@@ -141,25 +141,49 @@ export function HeroIllustration() {
         </svg>
       </div>
 
-      {/* Central core with pulse */}
-      <div className="absolute inset-[38%] flex items-center justify-center">
+      {/* Central core with pulse, now uses actual GuardianX logo */}
+      <div className="absolute inset-[36%] flex items-center justify-center">
         <motion.div
-          animate={{ scale: [1, 1.04, 1] }}
+          animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="relative flex h-full w-full items-center justify-center rounded-full border border-gold/40 bg-gradient-to-br from-gold/15 via-gold/5 to-transparent backdrop-blur-md"
+          className="relative flex h-full w-full items-center justify-center rounded-full border-2 border-gold/50 bg-black backdrop-blur-md overflow-hidden"
         >
-          <div className="absolute inset-0 rounded-full bg-gold/10 blur-2xl" />
-          <div className="relative flex flex-col items-center">
-            <motion.div
-              animate={{ y: [0, -3, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Rocket className="h-10 w-10 text-gold" strokeWidth={1.25} />
-            </motion.div>
-            <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-gold">
-              Launchpad
-            </span>
-          </div>
+          {/* Gold glow */}
+          <div className="absolute inset-0 rounded-full bg-gold/15 blur-2xl" />
+          {/* Rotating gold ring overlay */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-[-6px] rounded-full"
+          >
+            <svg viewBox="0 0 200 200" className="h-full w-full">
+              <circle
+                cx="100"
+                cy="100"
+                r="96"
+                fill="none"
+                stroke="oklch(0.78 0.16 75 / 0.5)"
+                strokeWidth="1"
+                strokeDasharray="30 4 4 4 60 4"
+              />
+            </svg>
+          </motion.div>
+          {/* The actual GuardianX logo */}
+          <motion.div
+            animate={{ y: [0, -3, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative z-10 flex h-3/4 w-3/4 items-center justify-center"
+          >
+            <Image
+              src="/logo.png"
+              alt="GuardianX Launchpad logo"
+              fill
+              className="object-contain drop-shadow-[0_0_20px_oklch(0.78_0.16_75_/_0.5)]"
+              priority
+            />
+          </motion.div>
+          {/* Inner gold ring */}
+          <div className="pointer-events-none absolute inset-2 rounded-full ring-1 ring-inset ring-gold/30" />
         </motion.div>
       </div>
 
