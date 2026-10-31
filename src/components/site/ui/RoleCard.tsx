@@ -8,11 +8,13 @@ export interface RoleCardData {
   level: string;
   description: string;
   skills: string[];
+  slug?: string;
 }
 
 interface RoleCardProps extends RoleCardData {
   index?: number;
   className?: string;
+  onClick?: () => void;
 }
 
 export function RoleCard({
@@ -22,7 +24,9 @@ export function RoleCard({
   skills,
   index = 0,
   className,
+  onClick,
 }: RoleCardProps) {
+  const Wrapper = onClick ? "button" : "div";
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -30,9 +34,23 @@ export function RoleCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
       className={cn(
-        "group relative p-6 rounded-lg border border-border bg-card/40 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-gold/40 hover:bg-card/60",
+        "group relative p-6 rounded-lg border border-border bg-card/40 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-gold/40 hover:bg-card/60 text-left",
+        onClick && "cursor-pointer",
         className
       )}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={
+        onClick
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
     >
       {/* Gold sweep on hover */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gold/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

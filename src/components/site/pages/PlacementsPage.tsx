@@ -24,14 +24,19 @@ import { RoleCard } from "../ui/RoleCard";
 import { StatCard } from "../ui/StatCard";
 import { SectionDivider } from "../ui/SectionDivider";
 import { FloatingOrbs } from "../ui/FloatingOrbs";
+import { GlassCard } from "../ui/GlassCard";
+import { SalaryBandChart } from "../ui/SalaryBandChart";
+import { PlacementTicker } from "../ui/PlacementTicker";
 
 interface PlacementsPageProps {
   onNavigate: (p: PageId) => void;
+  navigateToRole: (slug: string) => void;
 }
 
 const roleCategories = [
   {
     title: "Cybersecurity Analyst",
+    slug: "cybersecurity-analyst",
     level: "Entry → Senior",
     description:
       "SOC monitoring, threat hunting, vulnerability assessment, GRC, and penetration testing roles across cloud and on-prem environments. Certifications like Security+, CEH, OSCP preferred.",
@@ -39,6 +44,7 @@ const roleCategories = [
   },
   {
     title: "Software Engineer",
+    slug: "software-engineer",
     level: "Entry → Lead",
     description:
       "Backend, frontend, and full-stack engineering across Java, Python, Go, Node.js, and modern TypeScript stacks. System design and code quality expectations vary by seniority.",
@@ -46,6 +52,7 @@ const roleCategories = [
   },
   {
     title: "Cloud / DevOps Engineer",
+    slug: "cloud-devops",
     level: "Mid → Senior",
     description:
       "AWS, Azure, GCP platform engineering, infrastructure-as-code, Kubernetes operations, and CI/CD pipeline ownership. Strong Linux and networking fundamentals expected.",
@@ -53,6 +60,7 @@ const roleCategories = [
   },
   {
     title: "AI / ML Engineer",
+    slug: "ai-ml-engineer",
     level: "Mid → Senior",
     description:
       "Model training, MLOps, LLM applications, computer vision, and NLP roles across product and research teams. Hands-on PyTorch or TensorFlow experience essential.",
@@ -60,6 +68,7 @@ const roleCategories = [
   },
   {
     title: "Data Engineer",
+    slug: "data-engineer",
     level: "Mid → Senior",
     description:
       "Pipelines, data warehouses, lakehouse architecture, streaming platforms, and analytics engineering with dbt. SQL fluency and distributed systems exposure expected.",
@@ -67,6 +76,7 @@ const roleCategories = [
   },
   {
     title: "Product Designer",
+    slug: "product-designer",
     level: "Mid → Lead",
     description:
       "UX research, interaction design, design systems, and product strategy for B2B and consumer tech products. Strong portfolio of end-to-end product work required.",
@@ -74,6 +84,7 @@ const roleCategories = [
   },
   {
     title: "Mobile Engineer",
+    slug: "mobile-engineer",
     level: "Mid → Senior",
     description:
       "iOS (Swift), Android (Kotlin), and cross-platform (React Native, Flutter) engineering. Performance tuning, offline-first, and platform API fluency expected.",
@@ -81,6 +92,7 @@ const roleCategories = [
   },
   {
     title: "Site Reliability Engineer",
+    slug: "site-reliability-engineer",
     level: "Mid → Senior",
     description:
       "Production reliability, observability, incident response, and platform automation. Strong coding skills and distributed systems understanding required.",
@@ -88,6 +100,7 @@ const roleCategories = [
   },
   {
     title: "QA / Test Engineer",
+    slug: "qa-test-engineer",
     level: "Entry → Senior",
     description:
       "Test automation, integration testing, performance testing, and quality engineering embedded in product teams. Cypress, Playwright, and Python proficiency valued.",
@@ -95,6 +108,7 @@ const roleCategories = [
   },
   {
     title: "Engineering Manager",
+    slug: "engineering-manager",
     level: "Senior → Director",
     description:
       "Team leadership, technical strategy, hiring, and delivery ownership for engineering teams. People leadership and architecture decision-making experience expected.",
@@ -102,6 +116,7 @@ const roleCategories = [
   },
   {
     title: "Product Manager",
+    slug: "product-manager",
     level: "Mid → Director",
     description:
       "Discovery, roadmap, execution, and stakeholder management for B2B and consumer products. Strong analytical skills and technical fluency required.",
@@ -109,6 +124,7 @@ const roleCategories = [
   },
   {
     title: "Platform Engineer",
+    slug: "platform-engineer",
     level: "Mid → Senior",
     description:
       "Internal developer platforms, infrastructure tooling, service frameworks, and developer experience. API design and distributed systems exposure expected.",
@@ -189,7 +205,7 @@ const confidentialityPoints = [
   "We respect candidate privacy, your current employer is never notified of your job search without your explicit consent.",
 ];
 
-export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
+export function PlacementsPage({ onNavigate, navigateToRole }: PlacementsPageProps) {
   return (
     <>
       <Background variant="hero" />
@@ -249,14 +265,32 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
         </div>
       </section>
 
+      {/* Live placement ticker */}
+      <section className="relative py-6 border-y border-border bg-card/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <GlassCard className="p-5" staticHighlight>
+            <PlacementTicker />
+          </GlassCard>
+        </div>
+      </section>
+
       {/* Stats */}
-      <section className="relative py-8 border-y border-border bg-card/20">
+      <section className="relative py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {placementStats.map((s, i) => (
               <StatCard key={s.label} {...s} delay={i * 0.08} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Salary insights */}
+      <section className="relative py-8 border-y border-border bg-card/20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <GlassCard className="p-6 sm:p-8" staticHighlight>
+            <SalaryBandChart />
+          </GlassCard>
         </div>
       </section>
 
@@ -278,7 +312,12 @@ export function PlacementsPage({ onNavigate }: PlacementsPageProps) {
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {roleCategories.map((r, i) => (
-              <RoleCard key={r.title} {...r} index={i} />
+              <RoleCard
+                key={r.title}
+                {...r}
+                index={i}
+                onClick={() => r.slug && navigateToRole(r.slug)}
+              />
             ))}
           </div>
 

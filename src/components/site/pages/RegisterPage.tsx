@@ -20,6 +20,7 @@ import { type PageId } from "../use-router";
 import { Background } from "../ui/Background";
 import { SectionHeading } from "../ui/SectionHeading";
 import { CTAButton } from "../ui/CTAButton";
+import { Confetti } from "../ui/Confetti";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -408,6 +409,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
     return (
       <>
         <Background variant="hero" />
+        <Confetti fire={paid} />
         <section className="relative pt-28 pb-24 min-h-[80vh] flex items-center">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 w-full">
             <motion.div

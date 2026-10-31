@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense, lazy } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
@@ -9,36 +10,100 @@ import { AdmissionsPage } from "./pages/AdmissionsPage";
 import { PlacementsPage } from "./pages/PlacementsPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ContactPage } from "./pages/ContactPage";
+import { DashboardPage } from "./pages/DashboardPage";
+import { RoleDeepDivePage } from "./pages/RoleDeepDivePage";
+import { EmployersPage } from "./pages/EmployersPage";
+import { ResumeReviewPage } from "./pages/ResumeReviewPage";
 import { WhatsAppButton } from "./ui/WhatsAppButton";
+import { CustomCursor } from "./ui/CustomCursor";
+import { PageTransition } from "./ui/PageTransition";
+import { Skeleton } from "./ui/Skeleton";
+
+// Lazy-load the heavier pages for route-level code splitting
+const LazyRegisterPage = lazy(() =>
+  import("./pages/RegisterPage").then((m) => ({ default: m.RegisterPage }))
+);
+const LazyDashboardPage = lazy(() =>
+  import("./pages/DashboardPage").then((m) => ({ default: m.DashboardPage }))
+);
+const LazyResumeReviewPage = lazy(() =>
+  import("./pages/ResumeReviewPage").then((m) => ({ default: m.ResumeReviewPage }))
+);
+const LazyRoleDeepDivePage = lazy(() =>
+  import("./pages/RoleDeepDivePage").then((m) => ({ default: m.RoleDeepDivePage }))
+);
+
+function PageLoader() {
+  return (
+    <div className="pt-32 pb-20 px-4">
+      <div className="mx-auto max-w-5xl space-y-4">
+        <Skeleton className="h-8 w-32 rounded-full" />
+        <Skeleton className="h-16 w-full max-w-2xl" />
+        <Skeleton className="h-6 w-full max-w-xl" />
+        <Skeleton className="h-64 w-full mt-8" />
+      </div>
+    </div>
+  );
+}
 
 export function PageRouter() {
-  const { page, navigate } = usePageRouter();
+  const { page, navigate, roleSlug, navigateToRole } = usePageRouter();
+
+  // If we have a role slug, render the deep-dive page
+  const isRoleDeepDive = roleSlug !== null;
 
   return (
     <div className="relative min-h-screen flex flex-col bg-background">
+      <CustomCursor />
+      <PageTransition pageKey={isRoleDeepDive ? `role-${roleSlug}` : page} />
+
       <Navbar currentPage={page} onNavigate={navigate} />
 
       <main className="flex-1">
         <AnimatePresence mode="wait">
           <motion.div
-            key={page}
+            key={isRoleDeepDive ? `role-${roleSlug}` : page}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            {page === "home" && <HomePage onNavigate={navigate} />}
-            {page === "admissions" && <AdmissionsPage onNavigate={navigate} />}
-            {page === "placements" && <PlacementsPage onNavigate={navigate} />}
-            {page === "register" && <RegisterPage onNavigate={navigate} />}
-            {page === "contact" && <ContactPage onNavigate={navigate} />}
+            {isRoleDeepDive && roleSlug ? (
+              <Suspense fallback={<PageLoader />}>
+                <LazyRoleDeepDivePage onNavigate={navigate} roleSlug={roleSlug} />
+              </Suspense>
+            ) : (
+              <>
+                {page === "home" && <HomePage onNavigate={navigate} />}
+                {page === "admissions" && <AdmissionsPage onNavigate={navigate} />}
+                {page === "placements" && (
+                  <PlacementsPage onNavigate={navigate} navigateToRole={navigateToRole} />
+                )}
+                {page === "register" && (
+                  <Suspense fallback={<PageLoader />}>
+                    <LazyRegisterPage onNavigate={navigate} />
+                  </Suspense>
+                )}
+                {page === "contact" && <ContactPage onNavigate={navigate} />}
+                {page === "dashboard" && (
+                  <Suspense fallback={<PageLoader />}>
+                    <LazyDashboardPage onNavigate={navigate} />
+                  </Suspense>
+                )}
+                {page === "employers" && <EmployersPage onNavigate={navigate} />}
+                {page === "resume-review" && (
+                  <Suspense fallback={<PageLoader />}>
+                    <LazyResumeReviewPage onNavigate={navigate} />
+                  </Suspense>
+                )}
+              </>
+            )}
           </motion.div>
         </AnimatePresence>
       </main>
 
       <Footer onNavigate={navigate} />
 
-      {/* Floating WhatsApp button, appears on all pages after scroll */}
       <WhatsAppButton />
     </div>
   );
