@@ -1,17 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "GuardianX2026!";
+// Admin password is read from environment variable.
+// In production, ALWAYS set ADMIN_PASSWORD. If not set, admin is disabled.
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
 
 /**
  * POST /api/admin/auth
  * Body: { password }
- * Returns a session token (simple signed cookie value) if password matches.
+ * Returns a session token if password matches the configured ADMIN_PASSWORD.
  *
  * Note: This is a simple password check for the admin panel.
  * For production, consider using NextAuth.js with proper session management.
  */
 export async function POST(req: NextRequest) {
   try {
+    if (!ADMIN_PASSWORD) {
+      return NextResponse.json(
+        { error: "Admin panel is disabled. Set ADMIN_PASSWORD env variable." },
+        { status: 503 }
+      );
+    }
     const { password } = await req.json();
     if (password !== ADMIN_PASSWORD) {
       return NextResponse.json(

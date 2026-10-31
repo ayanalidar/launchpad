@@ -119,9 +119,8 @@ export function AdminLogin({ onSuccess }: AdminLoginProps) {
             </form>
 
             <p className="mt-6 text-center text-xs text-muted-foreground">
-              Default password is set in <code className="text-gold">ADMIN_PASSWORD</code> env var.
-              <br />
-              Change it before going to production.
+              Password is set via the{" "}
+              <code className="text-gold">ADMIN_PASSWORD</code> environment variable.
             </p>
           </div>
         </div>
