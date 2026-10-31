@@ -157,7 +157,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
-            GuardianX assists candidates in exploring technology job
+            GuardianX Launchpad assists candidates in exploring technology job
             opportunities across every domain through our consultancy network.
             Below is everything you need to know about eligibility, the
             registration process, fee structure, and what to expect, all
@@ -189,7 +189,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
               <>
                 Who can register
                 <br />
-                <span className="text-gradient-gold italic">with GuardianX</span>
+                <span className="text-gradient-gold italic">with GuardianX Launchpad</span>
               </>
             }
             description="We welcome candidates from across the technology spectrum, from fresh graduates targeting entry-level roles to senior practitioners seeking their next leadership position. Below are the four factors we consider during qualification."

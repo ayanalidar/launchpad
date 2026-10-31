@@ -19,6 +19,7 @@ import {
   TrendingUp,
   Award,
   GraduationCap,
+  Rocket,
 } from "lucide-react";
 import { type PageId } from "../use-router";
 import { Background, Noise } from "../ui/Background";
@@ -32,6 +33,7 @@ import { DomainMarquee } from "../ui/DomainMarquee";
 import { SectionDivider } from "../ui/SectionDivider";
 import { BentoCard } from "../ui/BentoCard";
 import { EmailCaptureBar } from "../ui/EmailCaptureBar";
+import { OurFamilyStrip } from "../ui/OurFamilyStrip";
 import {
   PlacementsCarousel,
   type PlacementStory,
@@ -188,7 +190,7 @@ const placementStories: PlacementStory[] = [
     companyType: "SaaS unicorn",
     outcome: "+38% hike",
     quote:
-      "GuardianX understood my target companies before I even named them. Got three interview calls within ten days, accepted an offer in three weeks.",
+      "GuardianX Launchpad understood my target companies before I even named them. Got three interview calls within ten days, accepted an offer in three weeks.",
     placedAgo: "2 weeks ago",
   },
   {
@@ -218,7 +220,7 @@ const placementStories: PlacementStory[] = [
     companyType: "AI product startup",
     outcome: "+42% hike",
     quote:
-      "Coming from a non-tier-1 college, I expected to be filtered out. GuardianX actually advocated for my portfolio work and got me shortlisted at places I wouldn't have reached on my own.",
+      "Coming from a non-tier-1 college, I expected to be filtered out. GuardianX Launchpad actually advocated for my portfolio work and got me shortlisted at places I wouldn't have reached on my own.",
     placedAgo: "5 weeks ago",
   },
   {
@@ -228,7 +230,7 @@ const placementStories: PlacementStory[] = [
     companyType: "Global SaaS",
     outcome: "Remote-first",
     quote:
-      "I wanted a remote-first design role and most consultancies kept pushing me toward on-site. GuardianX actually listened. Placed at a global SaaS within four weeks of registering.",
+      "I wanted a remote-first design role and most consultancies kept pushing me toward on-site. GuardianX Launchpad actually listened. Placed at a global SaaS within four weeks of registering.",
     placedAgo: "1 week ago",
   },
 ];
@@ -266,11 +268,11 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 transition={{ duration: 0.7, delay: 0.1 }}
                 className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-semibold tracking-tight text-foreground leading-[1.05]"
               >
-                Your gateway to
+                Launch your
                 <br />
                 <span className="text-gradient-gold italic">technology</span>
                 <br />
-                careers that matter.
+                career with us.
               </motion.h1>
 
               <motion.p
@@ -279,8 +281,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed"
               >
-                GuardianX connects skilled professionals with leading tech
-                employers across every domain, engineering, cybersecurity,
+                GuardianX Launchpad connects skilled professionals with leading
+                tech employers across every domain, engineering, cybersecurity,
                 cloud, AI/ML, data, design, and more. We match you based on
                 skills, qualifications, experience, and preferred location,
                 and stay engaged through every stage of the hiring process.
@@ -352,6 +354,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <DomainMarquee />
         </div>
       </section>
+
+      {/* Our Family strip, the three GuardianX properties */}
+      <OurFamilyStrip />
 
       {/* Stats strip, tighter */}
       <section className="relative py-10">
@@ -696,6 +701,24 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
 
               <div className="grid gap-3">
+                <div className="group flex items-center justify-between gap-4 p-5 rounded-lg border border-gold/40 bg-gold/[0.04]">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-md border border-gold/40 bg-gold/10 text-gold">
+                      <Rocket className="h-5 w-5" strokeWidth={1.75} />
+                    </div>
+                    <div>
+                      <div className="font-display text-base font-semibold text-foreground">
+                        GuardianX Launchpad
+                      </div>
+                      <div className="font-mono text-xs text-muted-foreground mt-1">
+                        You&apos;re here, recruitment &amp; career assistance
+                      </div>
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-gold">
+                    Current
+                  </span>
+                </div>
                 <a
                   href="https://www.academy.guardianx.cloud"
                   target="_blank"
@@ -711,7 +734,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                         GuardianX Academy
                       </div>
                       <div className="font-mono text-xs text-muted-foreground mt-1">
-                        academy.guardianx.cloud
+                        academy.guardianx.cloud, training &amp; upskilling
                       </div>
                     </div>
                   </div>

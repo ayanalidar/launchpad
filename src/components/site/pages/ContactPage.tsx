@@ -11,7 +11,7 @@ import {
   Clock,
   CheckCircle2,
   GraduationCap,
-  Briefcase,
+  Rocket,
 } from "lucide-react";
 import { type PageId } from "../use-router";
 import { Background } from "../ui/Background";
@@ -251,7 +251,7 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
                       <p className="text-xs text-muted-foreground">
                         By submitting, you agree to be contacted by GuardianX
-                        Academy regarding your inquiry.
+                        Launchpad regarding your inquiry.
                       </p>
                       <CTAButton onClick={() => {}}>
                         {submitting ? (
@@ -397,18 +397,18 @@ export function ContactPage({ onNavigate: _onNavigate }: ContactPageProps) {
           <SectionHeading
             eyebrow="Our Presence"
             title="The GuardianX Family"
-            description="Three specialised properties under one family. This site is the recruitment consultancy; the academy is where we train candidates; and GuardianX Security handles enterprise cybersecurity services."
+            description="Three specialised properties under one family. This site is GuardianX Launchpad, the recruitment consultancy; the academy is where we train candidates; and GuardianX Security handles enterprise cybersecurity services."
           />
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Recruitment consultancy (this site) */}
+            {/* Launchpad consultancy (this site) */}
             <div className="p-6 rounded-lg border border-gold/30 bg-gold/[0.03]">
               <div className="flex items-center gap-3 mb-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold">
-                  <Briefcase className="h-4 w-4" />
+                  <Rocket className="h-4 w-4" />
                 </div>
                 <h3 className="font-display text-lg font-semibold text-foreground">
-                  GuardianX Recruitment
+                  GuardianX Launchpad
                 </h3>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">

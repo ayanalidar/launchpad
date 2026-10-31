@@ -24,12 +24,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GuardianX Recruitment & Career Assistance Consultancy",
+  title: "GuardianX Launchpad, Recruitment & Career Assistance Consultancy",
   description:
-    "GuardianX is a premier technology recruitment and career assistance consultancy. We connect skilled professionals with leading roles across every domain of technology, cybersecurity, engineering, cloud, AI/ML, data, design, and more, through our consultancy network.",
+    "GuardianX Launchpad is a premier technology recruitment and career assistance consultancy. We connect skilled professionals with leading roles across every domain of technology, cybersecurity, engineering, cloud, AI/ML, data, design, and more, through our consultancy network.",
   keywords: [
     "technology recruitment consultancy",
-    "GuardianX Recruitment",
+    "GuardianX Launchpad",
     "tech jobs India",
     "software engineering recruitment",
     "cybersecurity jobs",
@@ -39,20 +39,20 @@ export const metadata: Metadata = {
     "career assistance consultancy",
     "IT recruitment agency",
   ],
-  authors: [{ name: "GuardianX Recruitment & Career Assistance Consultancy" }],
+  authors: [{ name: "GuardianX Launchpad" }],
   icons: {
     icon: "/logo.svg",
   },
   openGraph: {
-    title: "GuardianX Recruitment & Career Assistance Consultancy",
+    title: "GuardianX Launchpad, Recruitment & Career Assistance Consultancy",
     description:
       "Premium technology recruitment and career assistance. Connecting skilled professionals with leading roles across every domain of technology.",
-    siteName: "GuardianX Recruitment",
+    siteName: "GuardianX Launchpad",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GuardianX Recruitment & Career Assistance Consultancy",
+    title: "GuardianX Launchpad, Recruitment & Career Assistance Consultancy",
     description:
       "Premium technology recruitment and career assistance consultancy.",
   },

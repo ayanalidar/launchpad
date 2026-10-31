@@ -26,9 +26,10 @@ export function Footer({ onNavigate }: FooterProps) {
             <BrandLogo variant="full" />
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-md">
               Premier technology recruitment &amp; career assistance consultancy.
-              We connect skilled professionals with leading roles across every
-              domain of technology, through our consultancy network, based on
-              your skills, qualifications, experience, and preferred location.
+              GuardianX Launchpad connects skilled professionals with leading
+              roles across every domain of technology, through our consultancy
+              network, based on your skills, qualifications, experience, and
+              preferred location.
             </p>
             <a
               href="https://www.linkedin.com/company/guardianx-academy/"
@@ -140,8 +141,8 @@ export function Footer({ onNavigate }: FooterProps) {
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} GuardianX Recruitment &amp; Career
-            Assistance Consultancy. All rights reserved.
+            © {new Date().getFullYear()} GuardianX Launchpad. All rights
+            reserved.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
             <span className="flex items-center gap-1.5">

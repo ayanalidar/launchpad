@@ -52,7 +52,7 @@ export function Navbar({ currentPage, onNavigate }: NavbarProps) {
             <button
               onClick={() => handleNav("home")}
               className="group"
-              aria-label="GuardianX Recruitment, Home"
+              aria-label="GuardianX Launchpad, Home"
             >
               <BrandLogo />
             </button>

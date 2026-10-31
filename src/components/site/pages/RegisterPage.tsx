@@ -315,7 +315,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
         setSubmitting(false);
         toast({
           title: "Registration complete",
-          description: "Payment verified. Welcome to GuardianX Academy.",
+          description: "Payment verified. Welcome to GuardianX Launchpad.",
         });
       } else {
         throw new Error(data.error);
@@ -359,12 +359,12 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
           amount: opts.amount,
           currency: opts.currency,
           order_id: opts.orderId,
-          name: "GuardianX Academy",
-          description: "Cybersecurity Recruitment, Registration Fee",
+          name: "GuardianX Launchpad",
+          description: "GuardianX Launchpad, Registration Fee",
           image: "/logo.svg",
           prefill: opts.prefill,
           notes: {
-            purpose: "GuardianX Academy registration",
+            purpose: "GuardianX Launchpad registration",
           },
           theme: {
             color: "#F59E0B",
@@ -433,8 +433,8 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                 Registration complete.
               </h1>
               <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                Welcome to GuardianX. Your profile is now active in our
-                consultancy network. Our team will review your details and
+                Welcome to GuardianX Launchpad. Your profile is now active in
+                our consultancy network. Our team will review your details and
                 reach out within five business days to discuss matching
                 opportunities and walk you through the post-placement
                 consultancy fee structure.

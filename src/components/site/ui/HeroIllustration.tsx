@@ -12,6 +12,7 @@ import {
   Smartphone,
   Cpu,
   LineChart,
+  Rocket,
 } from "lucide-react";
 
 /**
@@ -153,10 +154,10 @@ export function HeroIllustration() {
               animate={{ y: [0, -3, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
-              <ShieldCheck className="h-10 w-10 text-gold" strokeWidth={1.25} />
+              <Rocket className="h-10 w-10 text-gold" strokeWidth={1.25} />
             </motion.div>
             <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-gold">
-              GuardianX
+              Launchpad
             </span>
           </div>
         </motion.div>
