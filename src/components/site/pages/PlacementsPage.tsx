@@ -295,7 +295,7 @@ export function PlacementsPage({ onNavigate, navigateToRole }: PlacementsPagePro
       </section>
 
       {/* Role categories, broader tech scope */}
-      <section className="relative py-12 sm:py-16">
+      <section className="relative py-12 sm:py-16 cv-auto">
         <FloatingOrbs count={2} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -336,7 +336,7 @@ export function PlacementsPage({ onNavigate, navigateToRole }: PlacementsPagePro
       <SectionDivider label="Process" className="my-2" />
 
       {/* Recruitment process */}
-      <section className="relative py-12 sm:py-16 border-y border-border bg-card/20">
+      <section className="relative py-12 sm:py-16 cv-auto border-y border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             align="center"
@@ -384,7 +384,7 @@ export function PlacementsPage({ onNavigate, navigateToRole }: PlacementsPagePro
       </section>
 
       {/* Confidentiality policy */}
-      <section className="relative py-12 sm:py-16">
+      <section className="relative py-12 sm:py-16 cv-auto">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-28">
@@ -436,7 +436,7 @@ export function PlacementsPage({ onNavigate, navigateToRole }: PlacementsPagePro
       </section>
 
       {/* LinkedIn CTA */}
-      <section className="relative py-12 sm:py-16 border-t border-border bg-card/20">
+      <section className="relative py-12 sm:py-16 cv-auto border-t border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-2xl border border-gold/20 bg-card/40 backdrop-blur-sm p-8 sm:p-10 lg:p-12">
             <div className="absolute inset-0 -z-10">

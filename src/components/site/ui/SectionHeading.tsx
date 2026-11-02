@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { FadeIn } from "./FadeIn";
 
 interface SectionHeadingProps {
   eyebrow?: string;
@@ -27,46 +27,21 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className={cn(
-            "flex items-center gap-3 mb-4",
-            align === "center" && "justify-center"
-          )}
-        >
+        <FadeIn direction="up" distance={12} duration={500} className={cn("flex items-center gap-3 mb-4", align === "center" && "justify-center")}>
           <span className="h-px w-8 bg-gold/60" />
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold">
             {eyebrow}
           </span>
           <span className="h-px w-8 bg-gold/60" />
-        </motion.div>
+        </FadeIn>
       )}
-      <motion.h2
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, delay: 0.05 }}
-        // Fluid typography: scales smoothly from mobile to desktop
-        className="font-display font-semibold tracking-tight text-foreground leading-[1.1] text-[clamp(1.75rem,4vw,3rem)]"
-      >
+      <FadeIn as="h2" direction="up" distance={16} duration={600} delay={50} className="font-display font-semibold tracking-tight text-foreground leading-[1.1] text-[clamp(1.75rem,4vw,3rem)]">
         {title}
-      </motion.h2>
+      </FadeIn>
       {description && (
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className={cn(
-            "mt-4 text-[clamp(0.95rem,1.5vw,1.125rem)] text-muted-foreground leading-relaxed",
-            align === "center" && "mx-auto"
-          )}
-        >
+        <FadeIn as="p" direction="up" distance={16} duration={600} delay={150} className={cn("mt-4 text-[clamp(0.95rem,1.5vw,1.125rem)] text-muted-foreground leading-relaxed", align === "center" && "mx-auto")}>
           {description}
-        </motion.p>
+        </FadeIn>
       )}
     </div>
   );

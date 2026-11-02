@@ -159,6 +159,18 @@
   }
 }
 
+/* Performance: skip rendering off-screen content */
+@layer utilities {
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+  .cv-auto-tall {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1000px;
+  }
+}
+
 /* Premium utility classes */
 @layer utilities {
   .text-gold {
@@ -324,5 +336,12 @@
   }
   @keyframes shimmer-slide {
     100% { transform: translateX(100%); }
+  }
+  .animate-spin-slow {
+    animation: spin 30s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 }

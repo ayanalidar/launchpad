@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { FadeIn } from "./FadeIn";
 
 export interface RoleCardData {
   title: string;
@@ -26,13 +26,12 @@ export function RoleCard({
   className,
   onClick,
 }: RoleCardProps) {
-  const Wrapper = onClick ? "button" : "div";
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
+    <FadeIn
+      direction="up"
+      distance={20}
+      duration={500}
+      delay={index * 0.06 * 1000}
       className={cn(
         "group relative p-6 rounded-lg border border-border bg-card/40 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-gold/40 hover:bg-card/60 text-left",
         onClick && "cursor-pointer",
@@ -43,7 +42,7 @@ export function RoleCard({
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={
         onClick
-          ? (e) => {
+          ? (e: React.KeyboardEvent) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 onClick();
@@ -58,35 +57,13 @@ export function RoleCard({
       {/* Animated top gold line that grows on hover */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-0 group-hover:w-full bg-gradient-to-r from-transparent via-gold to-transparent transition-all duration-700" />
 
-      {/* Rotating decorative ring in corner */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute -bottom-10 -right-10 h-32 w-32 opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-500"
-      >
+      {/* Rotating decorative ring in corner (CSS-only) */}
+      <div className="absolute -bottom-10 -right-10 h-32 w-32 opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-500 animate-spin-slow">
         <svg viewBox="0 0 100 100" className="h-full w-full">
-          <circle
-            cx="50"
-            cy="50"
-            r="48"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeDasharray="4 4"
-            className="text-gold"
-          />
-          <circle
-            cx="50"
-            cy="50"
-            r="36"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeDasharray="2 6"
-            className="text-gold"
-          />
+          <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" className="text-gold" />
+          <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2 6" className="text-gold" />
         </svg>
-      </motion.div>
+      </div>
 
       <div className="relative flex items-start justify-between gap-3 mb-3">
         <div>
@@ -97,27 +74,11 @@ export function RoleCard({
             {title}
           </h3>
         </div>
-        <motion.div
-          whileHover={{ rotate: 45, scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 300, damping: 15 }}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-gold/60 group-hover:text-gold group-hover:border-gold/40 transition-colors"
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 11L11 3M11 3H5M11 3V9"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-gold/60 group-hover:text-gold group-hover:border-gold/40 transition-all group-hover:rotate-45 group-hover:scale-110" style={{ transitionDuration: "300ms" }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </motion.div>
+        </div>
       </div>
 
       <p className="relative text-sm text-muted-foreground leading-relaxed mb-5">
@@ -134,6 +95,6 @@ export function RoleCard({
           </span>
         ))}
       </div>
-    </motion.div>
+    </FadeIn>
   );
 }

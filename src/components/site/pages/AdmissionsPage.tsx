@@ -182,7 +182,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
       </section>
 
       {/* Eligibility */}
-      <section className="relative py-12 sm:py-16 border-y border-border bg-card/20">
+      <section className="relative py-12 sm:py-16 cv-auto border-y border-border bg-card/20">
         <FloatingOrbs count={2} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -220,7 +220,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
       </section>
 
       {/* Fee structure, simplified */}
-      <section className="relative py-12 sm:py-16">
+      <section className="relative py-12 sm:py-16 cv-auto">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Fee Structure"
@@ -300,7 +300,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
       <SectionDivider label="What's Included" className="my-2" />
 
       {/* What's included */}
-      <section className="relative py-12 sm:py-16 border-y border-border bg-card/20">
+      <section className="relative py-12 sm:py-16 cv-auto border-y border-border bg-card/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5">
@@ -346,7 +346,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
       </section>
 
       {/* FAQ */}
-      <section className="relative py-12 sm:py-16">
+      <section className="relative py-12 sm:py-16 cv-auto">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             align="center"

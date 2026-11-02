@@ -397,7 +397,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Value props, Bento grid */}
-      <section className="relative py-16 sm:py-20">
+      <section className="relative py-16 sm:py-20 cv-auto">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Why GuardianX"
@@ -437,7 +437,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <SectionDivider label="Process" className="my-2" />
 
       {/* Process flow */}
-      <section className="relative py-16 sm:py-20 border-y border-border bg-card/20">
+      <section className="relative py-16 sm:py-20 border-y border-border bg-card/20 cv-auto">
         <FloatingOrbs />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -460,7 +460,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Role categories */}
-      <section className="relative py-16 sm:py-20">
+      <section className="relative py-16 sm:py-20 cv-auto">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Role Categories"
@@ -489,7 +489,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Premium bento grid, feature showcase */}
-      <section className="relative py-16 sm:py-20 border-y border-border bg-card/20">
+      <section className="relative py-16 sm:py-20 border-y border-border bg-card/20 cv-auto">
         <FloatingOrbs count={2} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -624,7 +624,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* What's included */}
-      <section className="relative py-16 sm:py-20">
+      <section className="relative py-16 sm:py-20 cv-auto">
         <FloatingOrbs count={2} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -671,7 +671,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* LinkedIn + properties CTA */}
-      <section className="relative py-16 sm:py-20 border-t border-border bg-card/20">
+      <section className="relative py-16 sm:py-20 border-t border-border bg-card/20 cv-auto">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-2xl border border-gold/20 bg-card/40 backdrop-blur-sm p-8 sm:p-10 lg:p-12">
             <div className="absolute inset-0 -z-10">

@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Counter } from "./Counter";
+import { FadeIn } from "./FadeIn";
 
 interface StatCardProps {
   value: number;
@@ -12,7 +12,6 @@ interface StatCardProps {
   description?: string;
   className?: string;
   delay?: number;
-  /** Optional icon to show on the right */
   icon?: React.ComponentType<{ className?: string; strokeWidth?: number }>;
 }
 
@@ -27,11 +26,11 @@ export function StatCard({
   icon: Icon,
 }: StatCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay }}
+    <FadeIn
+      direction="up"
+      distance={20}
+      duration={600}
+      delay={delay}
       className={cn(
         "relative p-6 sm:p-8 rounded-lg border border-border bg-card/40 backdrop-blur-sm overflow-hidden group",
         className
@@ -41,35 +40,13 @@ export function StatCard({
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gold/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* Rotating corner ring decoration */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-8 -right-8 h-24 w-24 opacity-[0.08] group-hover:opacity-[0.18] transition-opacity duration-500"
-      >
+      {/* Rotating corner ring decoration (CSS-only, no framer-motion) */}
+      <div className="absolute -top-8 -right-8 h-24 w-24 opacity-[0.08] group-hover:opacity-[0.18] transition-opacity duration-500 animate-spin-slow">
         <svg viewBox="0 0 100 100" className="h-full w-full">
-          <circle
-            cx="50"
-            cy="50"
-            r="48"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeDasharray="6 4"
-            className="text-gold"
-          />
-          <circle
-            cx="50"
-            cy="50"
-            r="38"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeDasharray="2 8"
-            className="text-gold"
-          />
+          <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="6 4" className="text-gold" />
+          <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2 8" className="text-gold" />
         </svg>
-      </motion.div>
+      </div>
 
       <div className="relative flex items-start justify-between gap-3">
         <div className="flex items-baseline gap-1">
@@ -88,15 +65,9 @@ export function StatCard({
           )}
         </div>
         {Icon && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: delay + 0.3 }}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold opacity-60 group-hover:opacity-100 transition-opacity"
-          >
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-gold/30 bg-gold/5 text-gold opacity-60 group-hover:opacity-100 transition-opacity">
             <Icon className="h-4 w-4" strokeWidth={1.75} />
-          </motion.div>
+          </div>
         )}
       </div>
       <div className="relative mt-3 text-sm font-medium text-foreground">{label}</div>
@@ -105,6 +76,6 @@ export function StatCard({
           {description}
         </p>
       )}
-    </motion.div>
+    </FadeIn>
   );
 }

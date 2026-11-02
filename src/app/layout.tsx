@@ -8,13 +8,14 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600"], // reduced from 6 weights to 3, ~90KB saved
   style: ["normal", "italic"],
 });
 
@@ -22,6 +23,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -74,6 +76,13 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+// Preconnect to external services for faster initial connection
+const preconnects = [
+  "https://aws-0-ap-southeast-1.pooler.supabase.com",
+  "https://fonts.googleapis.com",
+  "https://fonts.gstatic.com",
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -81,6 +90,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
+      <head>
+        {/* Preconnect to Supabase pooler for faster DB connections */}
+        {preconnects.map((href) => (
+          <link key={href} rel="preconnect" href={href} crossOrigin="anonymous" />
+        ))}
+        {/* Preload the hero logo (LCP element) */}
+        <link rel="preload" as="image" href="/logo.png" fetchPriority="high" />
+      </head>
       <body
         className={`${inter.variable} ${playfair.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen`}
       >
