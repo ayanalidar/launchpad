@@ -48,11 +48,13 @@ export function WhatsAppButton() {
     return () => clearTimeout(t);
   }, [visible, dismissed]);
 
-  // Resolve the actual number: API > env > placeholder
+  // Resolve the actual number: API > hardcoded default > env > placeholder
+  // Hardcoded default ensures the correct number shows even if the database
+  // is unreachable on production. Override via admin panel or env var.
   const resolvedNumber =
     whatsappNumber ||
     process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ||
-    "918000000000";
+    "917006712347"; // GuardianX support number, hardcoded fallback
 
   const whatsappUrl =
     "https://wa.me/" +

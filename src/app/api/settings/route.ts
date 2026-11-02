@@ -30,9 +30,20 @@ export async function GET() {
     });
   } catch (err) {
     console.error("Public settings API error:", err);
-    return NextResponse.json(
-      { whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918000000000" },
-      { status: 200 } // return 200 with fallback so client doesn't crash
-    );
+    // Return hardcoded GuardianX number as fallback so WhatsApp works even
+    // if the database is unreachable on production
+    return NextResponse.json({
+      whatsappNumber: "917006712347",
+      linkedinUrl: "https://www.linkedin.com/company/guardianx-academy/",
+      academyUrl: "https://www.academy.guardianx.cloud",
+      securityUrl: "https://www.guardianx.in",
+      registrationFee: 2000,
+      responseTimeHours: 48,
+      heroHeadline: "Launch your technology career with us.",
+      heroBody:
+        "GuardianX Launchpad connects skilled professionals with leading tech employers across every domain.",
+      postPlacementFeeDescription:
+        "A consultancy fee applies upon successful placement. The complete fee structure is explained after registration.",
+    });
   }
 }
