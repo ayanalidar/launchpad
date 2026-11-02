@@ -6,13 +6,31 @@ import { MessageCircle, X } from "lucide-react";
 
 /**
  * WhatsApp floating button.
- * Appears bottom-right on all pages after the user scrolls past the hero.
- * Expands into a small "chat with us" prompt on first view, collapses to icon.
+ * - Number fetched from /api/settings (SiteSettings table) at runtime
+ * - Falls back to NEXT_PUBLIC_WHATSAPP_NUMBER env var
+ * - Falls back to a placeholder if neither is set
+ * - Appears bottom-right on all pages after the user scrolls past the hero
+ * - Expands into a small "chat with us" prompt on first view, collapses to icon
  */
 export function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [whatsappNumber, setWhatsappNumber] = useState<string | null>(null);
+
+  // Fetch the WhatsApp number from the public settings endpoint at runtime
+  useEffect(() => {
+    fetch("/api/settings")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.whatsappNumber) {
+          setWhatsappNumber(data.whatsappNumber);
+        }
+      })
+      .catch(() => {
+        // ignore, will use fallback
+      });
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -30,11 +48,15 @@ export function WhatsAppButton() {
     return () => clearTimeout(t);
   }, [visible, dismissed]);
 
-  const whatsappNumber =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918000000000";
+  // Resolve the actual number: API > env > placeholder
+  const resolvedNumber =
+    whatsappNumber ||
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ||
+    "918000000000";
+
   const whatsappUrl =
     "https://wa.me/" +
-    whatsappNumber +
+    resolvedNumber +
     "?text=" +
     encodeURIComponent(
       "Hi GuardianX team, I have a question about your recruitment consultancy."
