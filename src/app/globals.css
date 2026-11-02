@@ -103,8 +103,8 @@
     color-scheme: dark;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    /* Prevent horizontal scroll on any screen */
-    overflow-x: hidden;
+    /* Prevent horizontal scroll without creating a scroll container (clip, not hidden) */
+    overflow-x: clip;
   }
   body {
     @apply bg-background text-foreground;
@@ -113,10 +113,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    /* Prevent horizontal scroll on any screen */
-    overflow-x: hidden;
-    /* Overscroll behavior, no bouncy rubber-band */
-    overscroll-behavior-y: none;
+    /* Prevent horizontal scroll without breaking trackpad scroll (clip, not hidden) */
+    overflow-x: clip;
+    /* Contain overscroll so trackpad scroll works but doesn't chain to parent */
+    overscroll-behavior-y: contain;
   }
   /* Page fade on route change, no bounce, GPU-accelerated */
   .page-fade {
