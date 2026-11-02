@@ -38,7 +38,7 @@ export function SectionHeading({
           )}
         >
           <span className="h-px w-8 bg-gold/60" />
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-gold">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold">
             {eyebrow}
           </span>
           <span className="h-px w-8 bg-gold/60" />
@@ -49,7 +49,8 @@ export function SectionHeading({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, delay: 0.05 }}
-        className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]"
+        // Fluid typography: scales smoothly from mobile to desktop
+        className="font-display font-semibold tracking-tight text-foreground leading-[1.1] text-[clamp(1.75rem,4vw,3rem)]"
       >
         {title}
       </motion.h2>
@@ -60,7 +61,7 @@ export function SectionHeading({
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className={cn(
-            "mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed",
+            "mt-4 text-[clamp(0.95rem,1.5vw,1.125rem)] text-muted-foreground leading-relaxed",
             align === "center" && "mx-auto"
           )}
         >

@@ -1,22 +1,16 @@
 "use client";
 
 import { Suspense, lazy } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { usePageRouter } from "./use-router";
 import { HomePage } from "./pages/HomePage";
 import { AdmissionsPage } from "./pages/AdmissionsPage";
 import { PlacementsPage } from "./pages/PlacementsPage";
-import { RegisterPage } from "./pages/RegisterPage";
 import { ContactPage } from "./pages/ContactPage";
-import { DashboardPage } from "./pages/DashboardPage";
-import { RoleDeepDivePage } from "./pages/RoleDeepDivePage";
 import { EmployersPage } from "./pages/EmployersPage";
-import { ResumeReviewPage } from "./pages/ResumeReviewPage";
 import { WhatsAppButton } from "./ui/WhatsAppButton";
 import { CustomCursor } from "./ui/CustomCursor";
-import { PageTransition } from "./ui/PageTransition";
 import { Skeleton } from "./ui/Skeleton";
 import { AdminPage } from "./admin/AdminPage";
 
@@ -52,58 +46,51 @@ export function PageRouter() {
 
   // If we have a role slug, render the deep-dive page
   const isRoleDeepDive = roleSlug !== null;
+  const pageKey = isRoleDeepDive ? `role-${roleSlug}` : page;
 
   return (
     <div className="relative min-h-screen flex flex-col bg-background">
       <CustomCursor />
-      <PageTransition pageKey={isRoleDeepDive ? `role-${roleSlug}` : page} />
 
       <Navbar currentPage={page} onNavigate={navigate} />
 
       <main className="flex-1">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={isRoleDeepDive ? `role-${roleSlug}` : page}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {isRoleDeepDive && roleSlug ? (
-              <Suspense fallback={<PageLoader />}>
-                <LazyRoleDeepDivePage onNavigate={navigate} roleSlug={roleSlug} />
-              </Suspense>
-            ) : (
-              <>
-                {page === "home" && <HomePage onNavigate={navigate} />}
-                {page === "admissions" && <AdmissionsPage onNavigate={navigate} />}
-                {page === "placements" && (
-                  <PlacementsPage onNavigate={navigate} navigateToRole={navigateToRole} />
-                )}
-                {page === "register" && (
-                  <Suspense fallback={<PageLoader />}>
-                    <LazyRegisterPage onNavigate={navigate} />
-                  </Suspense>
-                )}
-                {page === "contact" && <ContactPage onNavigate={navigate} />}
-                {page === "dashboard" && (
-                  <Suspense fallback={<PageLoader />}>
-                    <LazyDashboardPage onNavigate={navigate} />
-                  </Suspense>
-                )}
-                {page === "employers" && <EmployersPage onNavigate={navigate} />}
-                {page === "resume-review" && (
-                  <Suspense fallback={<PageLoader />}>
-                    <LazyResumeReviewPage onNavigate={navigate} />
-                  </Suspense>
-                )}
-                {page === "admin" && (
-                  <AdminPage onExit={() => navigate("home")} />
-                )}
-              </>
-            )}
-          </motion.div>
-        </AnimatePresence>
+        {/* CSS-only opacity fade on route change, no y-axis bounce, no morphing overlay */}
+        <div key={pageKey} className="page-fade">
+          {isRoleDeepDive && roleSlug ? (
+            <Suspense fallback={<PageLoader />}>
+              <LazyRoleDeepDivePage onNavigate={navigate} roleSlug={roleSlug} />
+            </Suspense>
+          ) : (
+            <>
+              {page === "home" && <HomePage onNavigate={navigate} />}
+              {page === "admissions" && <AdmissionsPage onNavigate={navigate} />}
+              {page === "placements" && (
+                <PlacementsPage onNavigate={navigate} navigateToRole={navigateToRole} />
+              )}
+              {page === "register" && (
+                <Suspense fallback={<PageLoader />}>
+                  <LazyRegisterPage onNavigate={navigate} />
+                </Suspense>
+              )}
+              {page === "contact" && <ContactPage onNavigate={navigate} />}
+              {page === "dashboard" && (
+                <Suspense fallback={<PageLoader />}>
+                  <LazyDashboardPage onNavigate={navigate} />
+                </Suspense>
+              )}
+              {page === "employers" && <EmployersPage onNavigate={navigate} />}
+              {page === "resume-review" && (
+                <Suspense fallback={<PageLoader />}>
+                  <LazyResumeReviewPage onNavigate={navigate} />
+                </Suspense>
+              )}
+              {page === "admin" && (
+                <AdminPage onExit={() => navigate("home")} />
+              )}
+            </>
+          )}
+        </div>
       </main>
 
       <Footer onNavigate={navigate} />

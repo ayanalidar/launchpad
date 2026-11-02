@@ -10,9 +10,8 @@ import {
   Database,
   Palette,
   Server,
-  Smartphone,
   Cpu,
-  LineChart,
+  TrendingUp,
 } from "lucide-react";
 
 /**
@@ -20,29 +19,29 @@ import {
  * central core (career hub) + orbital tech-domain icons + glass stat cards.
  */
 export function HeroIllustration() {
+  // Reduced from 10 to 8 orbital icons for better performance
   const orbitIcons = [
     { Icon: ShieldCheck, label: "Security", angle: 0 },
-    { Icon: Code2, label: "Engineering", angle: 36 },
-    { Icon: Cloud, label: "Cloud", angle: 72 },
-    { Icon: Brain, label: "AI/ML", angle: 108 },
-    { Icon: Database, label: "Data", angle: 144 },
-    { Icon: Palette, label: "Design", angle: 180 },
-    { Icon: Server, label: "DevOps", angle: 216 },
-    { Icon: Smartphone, label: "Mobile", angle: 252 },
-    { Icon: Cpu, label: "Systems", angle: 288 },
-    { Icon: LineChart, label: "Analytics", angle: 324 },
+    { Icon: Code2, label: "Engineering", angle: 45 },
+    { Icon: Cloud, label: "Cloud", angle: 90 },
+    { Icon: Brain, label: "AI/ML", angle: 135 },
+    { Icon: Database, label: "Data", angle: 180 },
+    { Icon: Palette, label: "Design", angle: 225 },
+    { Icon: Server, label: "DevOps", angle: 270 },
+    { Icon: Cpu, label: "Systems", angle: 315 },
   ];
 
   return (
-    <div className="relative aspect-square w-full max-w-[34rem] mx-auto">
-      {/* Outer glow */}
-      <div className="absolute inset-[10%] rounded-full bg-gold/[0.08] blur-[80px]" />
+    <div className="relative aspect-square w-full max-w-[28rem] sm:max-w-[34rem] mx-auto">
+      {/* Outer glow (lighter blur) */}
+      <div className="absolute inset-[10%] rounded-full bg-gold/[0.06] blur-[60px]" />
 
-      {/* Rotating outer ring with dashes */}
+      {/* Rotating outer ring with dashes, slower for less redraw */}
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
         className="absolute inset-0"
+        style={{ willChange: "transform" }}
       >
         <svg viewBox="0 0 400 400" className="h-full w-full">
           <circle
@@ -192,12 +191,12 @@ export function HeroIllustration() {
         initial={{ opacity: 0, x: -20, y: 10 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="absolute top-[18%] left-[-8%] sm:left-[-4%]"
+        className="absolute top-[18%] left-2 sm:left-[-4%]"
       >
         <div className="glass-card rounded-lg p-3 sm:p-4 shadow-2xl">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold/15 text-gold">
-              <LineChart className="h-4 w-4" strokeWidth={2} />
+              <TrendingUp className="h-4 w-4" strokeWidth={2} />
             </div>
             <div>
               <div className="font-display text-lg font-semibold text-foreground leading-none">
@@ -215,7 +214,7 @@ export function HeroIllustration() {
         initial={{ opacity: 0, x: 20, y: -10 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-[18%] right-[-8%] sm:right-[-4%]"
+        className="absolute bottom-[18%] right-2 sm:right-[-4%]"
       >
         <div className="glass-card rounded-lg p-3 sm:p-4 shadow-2xl">
           <div className="flex items-center gap-2">

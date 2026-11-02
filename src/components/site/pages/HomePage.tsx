@@ -251,7 +251,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       {/* HERO, split layout: text + illustration */}
       <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center min-w-0">
             {/* Text column */}
             <div className="lg:col-span-7">
               <motion.div
@@ -273,7 +273,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-semibold tracking-tight text-foreground leading-[1.05]"
+                className="mt-6 font-display font-semibold tracking-tight text-foreground leading-[1.05] text-[clamp(2.5rem,7vw,4.5rem)]"
               >
                 Launch your
                 <br />
@@ -351,7 +351,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <EmailCaptureBar />
 
       {/* Domain marquee */}
-      <section className="relative py-6 border-y border-border bg-card/20">
+      <section className="relative py-6 border-y border-border bg-card/20 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-4 text-center">
             <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">

@@ -10,7 +10,6 @@ import {
 
 /**
  * Detects hover capability once on first render (SSR-safe).
- * Returns false on server, true only if the client supports hover (mouse).
  */
 function useHoverCapability(): boolean {
   return useState(() => {
@@ -20,11 +19,9 @@ function useHoverCapability(): boolean {
 }
 
 /**
- * Custom gold cursor with magnetic interactions.
- * - Hidden on touch devices (no hover capability)
- * - Grows when hovering interactive elements (a, button, [data-cursor])
- * - Adds a subtle gold trail
- * - Fully disabled when prefers-reduced-motion is set
+ * Custom gold cursor.
+ * Performance: lightweight spring (damping 30, stiffness 500), only 2 DOM nodes.
+ * Disabled on touch devices and reduced-motion users.
  */
 export function CustomCursor() {
   const reduced = useFramerReduced();
@@ -36,18 +33,30 @@ export function CustomCursor() {
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
-  const x = useSpring(cursorX, springConfig);
-  const y = useSpring(cursorY, springConfig);
+  // Snappier spring, less bounce
+  const x = useSpring(cursorX, { damping: 30, stiffness: 500, mass: 0.3 });
+  const y = useSpring(cursorY, { damping: 30, stiffness: 500, mass: 0.3 });
 
   useEffect(() => {
     if (!enabled) return;
 
+    let rafId: number | null = null;
+    let pendingX = -100;
+    let pendingY = -100;
+
     const onMove = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+      pendingX = e.clientX;
+      pendingY = e.clientY;
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          cursorX.set(pendingX);
+          cursorY.set(pendingY);
+          rafId = null;
+        });
+      }
       setHidden(false);
 
+      // Check interactive element via closest, throttled by rAF
       const el = e.target as HTMLElement;
       const isInteractive = !!el.closest(
         "a, button, input, textarea, select, [data-cursor]"
@@ -57,12 +66,13 @@ export function CustomCursor() {
 
     const onLeave = () => setHidden(true);
 
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
     document.addEventListener("mouseleave", onLeave);
 
     return () => {
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
+      if (rafId !== null) cancelAnimationFrame(rafId);
     };
   }, [enabled, cursorX, cursorY]);
 
@@ -70,35 +80,33 @@ export function CustomCursor() {
 
   return (
     <>
-      {/* Outer ring (larger, trails) */}
       <motion.div
         className="pointer-events-none fixed top-0 left-0 z-[100] rounded-full border border-gold/60"
-        style={{ x, y, translateX: "-50%", translateY: "-50%" }}
+        style={{ x, y, translateX: "-50%", translateY: "-50%", willChange: "transform" }}
         animate={{
-          width: hovering ? 56 : 36,
-          height: hovering ? 56 : 36,
+          width: hovering ? 48 : 32,
+          height: hovering ? 48 : 32,
           opacity: hidden ? 0 : hovering ? 0.6 : 0.4,
-          scale: hidden ? 0.5 : 1,
         }}
-        transition={{ type: "spring", damping: 20, stiffness: 300 }}
+        transition={{ duration: 0.15 }}
       />
-      {/* Inner dot (precise) */}
       <motion.div
         className="pointer-events-none fixed top-0 left-0 z-[100] rounded-full bg-gold"
-        style={{ x: cursorX, y: cursorY, translateX: "-50%", translateY: "-50%" }}
+        style={{ x: cursorX, y: cursorY, translateX: "-50%", translateY: "-50%", willChange: "transform" }}
         animate={{
           width: hovering ? 8 : 6,
           height: hovering ? 8 : 6,
           opacity: hidden ? 0 : 1,
         }}
+        transition={{ duration: 0.15 }}
       />
     </>
   );
 }
 
 /**
- * HOC/wrapper that makes any element magnetic: it pulls toward the cursor
- * when the cursor is within `radius` pixels. Disabled for reduced-motion.
+ * Magnetic wrapper, makes any element pull toward the cursor.
+ * Disabled for reduced-motion. Light spring, no excessive bounce.
  */
 interface MagneticProps {
   children: React.ReactNode;
@@ -110,7 +118,7 @@ interface MagneticProps {
 export function Magnetic({
   children,
   radius = 80,
-  strength = 0.4,
+  strength = 0.3,
   className,
 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -120,8 +128,8 @@ export function Magnetic({
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const xSpring = useSpring(x, { damping: 15, stiffness: 200 });
-  const ySpring = useSpring(y, { damping: 15, stiffness: 200 });
+  const xSpring = useSpring(x, { damping: 20, stiffness: 250 });
+  const ySpring = useSpring(y, { damping: 20, stiffness: 250 });
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!enabled || !ref.current) return;
@@ -150,7 +158,7 @@ export function Magnetic({
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      style={{ x: xSpring, y: ySpring }}
+      style={{ x: xSpring, y: ySpring, willChange: enabled ? "transform" : "auto" }}
       className={className}
     >
       {children}

@@ -101,16 +101,37 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Prevent horizontal scroll on any screen */
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    /* GPU acceleration hint for the whole document */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Prevent horizontal scroll on any screen */
+    overflow-x: hidden;
+    /* Overscroll behavior, no bouncy rubber-band */
+    overscroll-behavior-y: none;
+  }
+  /* Page fade on route change, no bounce, GPU-accelerated */
+  .page-fade {
+    animation: page-fade 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+    will-change: opacity;
+  }
+  @keyframes page-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
   ::selection {
     background-color: oklch(0.78 0.16 75 / 30%);
     color: oklch(0.97 0.005 60);
   }
-  /* Custom scrollbar */
+  /* Custom scrollbar, slim */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -124,6 +145,17 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: oklch(0.78 0.16 75 / 60%);
+  }
+  /* Respect reduced motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 

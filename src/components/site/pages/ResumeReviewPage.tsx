@@ -119,7 +119,7 @@ export function ResumeReviewPage({ onNavigate }: ResumeReviewPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-6 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.05]"
+            className="mt-6 font-display font-semibold tracking-tight text-foreground leading-[1.05] text-[clamp(2.25rem,6vw,3.75rem)]"
           >
             Get your resume
             <br />
