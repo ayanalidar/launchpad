@@ -22,6 +22,7 @@ import { FAQ } from "../ui/FAQ";
 import { SectionDivider } from "../ui/SectionDivider";
 import { BentoCard } from "../ui/BentoCard";
 import { FloatingOrbs } from "../ui/FloatingOrbs";
+import { useFetch } from "@/hooks/use-fetch";
 
 interface AdmissionsPageProps {
   onNavigate: (p: PageId) => void;
@@ -122,6 +123,9 @@ const faqItems = [
 ];
 
 export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
+  const { data: faqData } = useFetch<{ items: typeof faqItems }>("/api/faqs");
+  const faqs = faqData?.items?.length ? faqData.items : faqItems;
+
   return (
     <>
       <Background variant="hero" />
@@ -356,7 +360,7 @@ export function AdmissionsPage({ onNavigate }: AdmissionsPageProps) {
           />
 
           <div className="mt-10">
-            <FAQ items={faqItems} />
+            <FAQ items={faqs} />
           </div>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">

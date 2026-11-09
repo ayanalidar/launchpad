@@ -41,6 +41,7 @@ import {
   PlacementsCarousel,
   type PlacementStory,
 } from "../ui/PlacementsCarousel";
+import { useFetch } from "@/hooks/use-fetch";
 
 interface HomePageProps {
   onNavigate: (p: PageId) => void;
@@ -243,6 +244,9 @@ const placementStories: PlacementStory[] = [
 ];
 
 export function HomePage({ onNavigate }: HomePageProps) {
+  const { data: storiesData } = useFetch<{ items: typeof placementStories }>("/api/placements");
+  const stories = storiesData?.items?.length ? storiesData.items : placementStories;
+
   return (
     <>
       <Background variant="hero" />
@@ -391,7 +395,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             description="Anonymised stories of candidates placed through our consultancy network across every domain of technology. Names withheld for candidate privacy."
           />
           <div className="mt-10">
-            <PlacementsCarousel stories={placementStories} />
+            <PlacementsCarousel stories={stories} />
           </div>
         </div>
       </section>

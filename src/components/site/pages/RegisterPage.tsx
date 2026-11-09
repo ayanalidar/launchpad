@@ -21,6 +21,7 @@ import { Background } from "../ui/Background";
 import { SectionHeading } from "../ui/SectionHeading";
 import { CTAButton } from "../ui/CTAButton";
 import { Confetti } from "../ui/Confetti";
+import { useFetch } from "@/hooks/use-fetch";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -114,6 +115,12 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
   const [form, setForm] = useState<FormData>(initialForm);
   const [submitting, setSubmitting] = useState(false);
   const [paid, setPaid] = useState(false);
+
+  // Fetch roles from DB for the dropdown
+  const { data: rolesData } = useFetch<{ items: Array<{ title: string }> }>("/api/roles");
+  const roleCategories = rolesData?.items?.length
+    ? rolesData.items.map((r) => r.title)
+    : ROLE_CATEGORIES;
   const [registrationId, setRegistrationId] = useState<string | null>(null);
   const [paidOrderId, setPaidOrderId] = useState<string | null>(null);
 
@@ -790,7 +797,7 @@ export function RegisterPage({ onNavigate }: RegisterPageProps) {
                           className="w-full h-10 rounded-md border border-border bg-background/50 px-3 py-2 text-sm text-foreground focus:border-gold/60 focus:outline-none"
                         >
                           <option value="">Select category...</option>
-                          {ROLE_CATEGORIES.map((r) => (
+                          {roleCategories.map((r) => (
                             <option key={r} value={r}>
                               {r}
                             </option>

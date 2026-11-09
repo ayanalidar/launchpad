@@ -59,8 +59,27 @@ export async function GET(req: NextRequest) {
       },
     ];
 
-    // Mock matched roles (in production, this would query a real match table)
-    const matchedRoles = generateMatchedRoles(registration.preferredRoleCategory);
+    // Fetch real job openings from DB (fallback to generated mock if none)
+    const dbJobs = await db.jobOpening
+      .findMany({
+        where: { isActive: true },
+        orderBy: { createdAt: "desc" },
+        take: 5,
+      })
+      .catch(() => []);
+
+    const matchedRoles =
+      dbJobs.length > 0
+        ? dbJobs.map((j) => ({
+            title: j.title,
+            company: j.company,
+            location: j.location,
+            salary: j.salary,
+            matchScore: j.matchScore,
+            postedAgo: j.postedAgo,
+            status: j.status as "new" | "shortlisted" | "interviewing",
+          }))
+        : generateMatchedRoles(registration.preferredRoleCategory);
 
     // Fee structure (disclosed after registration, as user requested)
     const feeStructure = {

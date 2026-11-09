@@ -27,6 +27,7 @@ import { FloatingOrbs } from "../ui/FloatingOrbs";
 import { GlassCard } from "../ui/GlassCard";
 import { SalaryBandChart } from "../ui/SalaryBandChart";
 import { PlacementTicker } from "../ui/PlacementTicker";
+import { useFetch } from "@/hooks/use-fetch";
 
 interface PlacementsPageProps {
   onNavigate: (p: PageId) => void;
@@ -206,6 +207,9 @@ const confidentialityPoints = [
 ];
 
 export function PlacementsPage({ onNavigate, navigateToRole }: PlacementsPageProps) {
+  const { data, loading } = useFetch<{ items: typeof roleCategories }>("/api/roles");
+  const roles = data?.items?.length ? data.items : roleCategories;
+
   return (
     <>
       <Background variant="hero" />
@@ -311,7 +315,7 @@ export function PlacementsPage({ onNavigate, navigateToRole }: PlacementsPagePro
           />
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {roleCategories.map((r, i) => (
+            {roles.map((r, i) => (
               <RoleCard
                 key={r.title}
                 {...r}
